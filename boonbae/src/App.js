@@ -4,11 +4,13 @@ import './styles/App.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 import { Main, Enquire, Fund, Info, Search, Tree } from './pages';
+import Navbar from './components/Navbar';
 
 const App = () => {
 	return (
 		<>
 			<BrowserRouter>
+				<Navbar />
 				<Routes>
 					<Route path="/" element={<Main />} />
 					<Route path="/enquire" element={<Enquire />} />
@@ -18,6 +20,7 @@ const App = () => {
 					<Route path="/tree" element={<Tree />} />
 				</Routes>
 			</BrowserRouter>
+			
 		</>
 	)
 }
