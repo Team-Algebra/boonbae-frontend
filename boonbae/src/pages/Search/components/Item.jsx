@@ -1,12 +1,16 @@
 import React from "react"
+import {useNavigate} from "react-router-dom"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons"
 
 
-export const Item = ({item}) => {
+export const Item = ({ item }) => {
+    const navigate = useNavigate();
+
+
     return (
-        <div className="item-wrapper"> 
+        <div className="item-wrapper" onClick={()=>navigate("/info")}> 
             <div className="item-image-wrapper">
                 <img className="item-image" src={item.image} alt="item" />
             </div>

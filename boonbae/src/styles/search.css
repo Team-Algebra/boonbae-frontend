@@ -56,6 +56,7 @@
     border: 1px solid #D7D7D7;
 
     margin-bottom: 15px;
+    cursor: pointer;
 }
 
 .item-image-wrapper{
