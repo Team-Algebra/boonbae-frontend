@@ -1,0 +1,45 @@
+.main-tree {
+    background-color: #F7FFE5;
+    width: auto;
+    height: 500px;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.main-tree > div {
+    padding: 10px;
+}
+
+.main-tree .today-tree {
+    font-size: 1.4rem;
+}
+
+.main-tree .tree-image {
+    width: 100px;
+    height: auto;
+}
+
+.main-tree .go-tree {
+    width: 120px;
+    height: 35px;
+    font-weight: bold;
+    background-color: #D9D9D9;
+    border: none;
+}
+
+.main-info {
+    background-color: #E1ECC8;
+    width: auto;
+    height: 400px;
+    text-align: center;
+    font-size: 1rem;
+    padding: 50px 0;
+}
+
+.main-info > div {
+    padding: 20px;
+}
+
+.main-info > div div {
+    padding: 3px;
+}
