@@ -90,3 +90,74 @@
 .item-line-item{
     color: #E6E6E6;
 }
+
+
+
+
+.search-main-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 50px;
+}
+
+.search-rank-wrapper{
+    width: 65%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 70px;
+}
+
+.search-rank-title{
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.search-rank-list{
+    padding: 0;
+    margin: 0;
+}
+
+.search-rank-list > li{
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.search-honeytip-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+
+    width: 65%;
+    max-width: 500px;
+    height: 100px;
+
+    border: 1px solid #D7D7D7;
+
+    padding: 10px 20px;
+}
+
+.search-honeytip-icon{
+    color: #FFD600;
+}
+
+.search-honeytip-content-wrapper{
+    display: flex;
+    margin-left: 15px;
+    width: 80%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center ;
+}
+
+.search-honeytip-title{
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
