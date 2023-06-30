@@ -25,3 +25,63 @@
     height: 40px;
     text-align: center;
 }
+
+.search-result-count-wrapper{
+    margin-top: 10px;
+    font-size: 1rem;
+}
+.search-result-count{
+    font-weight: 600;
+}
+
+.search-result-wrapper{
+    margin-top: 80px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    width: 35%;
+    height: 150px;
+    padding: 10px 10px;
+
+    border: 2px solid #D7D7D7;
+}
+
+.item-image-wrapper{
+    width: 150px;
+    height: 150px;
+
+    margin-right: 20px;
+}
+
+.item-info-wrapper{
+    width: calc(100% - 220px);
+}
+
+.item-name{
+    font-size: 2rem;
+    /* font-weight: 600; */
+
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+    display: inline-block;
+}
+.item-type{
+    display: inline-block;
+}
+
+.item-tag{
+    color: #8B8B8B;
+}
+
+.item-line-item{
+    color: #E6E6E6;
+}
