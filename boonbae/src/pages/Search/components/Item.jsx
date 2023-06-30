@@ -4,19 +4,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons"
 
 
-export const Item = ()=> {
+export const Item = ({item}) => {
     return (
         <div className="item-wrapper"> 
             <div className="item-image-wrapper">
-                <img className="item-image" src="https://via.placeholder.com/150" alt="item" />
+                <img className="item-image" src={item.image} alt="item" />
             </div>
             <div className="item-info-wrapper">
-                <div className="item-name">상품명</div>
+                <div className="item-name">{item.name}</div>
                 <div className="item-type">
-                    일반쓰레기
+                    {item.type}
                 </div>
                 <div className="item-tag">
-                    #tag1 #tag2 #tag3
+                    {item.tag.map(tag => `#${tag} `)}
                 </div>
             </div>
             <div className="item-link">

@@ -7,7 +7,13 @@ import "../../styles/search.css"
 
 const Search = () => {
 
-    const [items, setItem] = useState([1]);
+    const [items, setItem] = useState([        {
+        name: "테스트",
+        type: "테스트",
+        tag: ["테스트", "테스트"],
+        image: "https://via.placeholder.com/150",
+    }]);
+
 
     return (
         <div className='search-wrapper'>
@@ -15,7 +21,7 @@ const Search = () => {
             {items.length !== 0 ? <div className='search-result-count-wrapper'>총 <span className='search-result-count'>{items.length}개</span>의 정보를 찾았어요</div> : null}
 
             <div className='search-result-wrapper'>
-                <Item />
+                <Item item={items[0]} />
             </div>
         </div>
     )
