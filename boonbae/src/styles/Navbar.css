@@ -1,0 +1,27 @@
+.navbar{
+  display : flex;
+  justify-content: space-between;
+  align-items: center;
+  margin : 3vh 3vw;
+}
+.navbar-active{
+  font-weight: bold;
+}
+.navbar-left{
+  display : flex;
+  align-items: center;
+}
+.navbar-left div, img{
+  margin-right : 2vw;
+}
+.navbar-right button{
+  border : none;
+  border-radius: 1rem;
+  font-size: 1rem;
+  padding : 0.5em 1.5em;
+  background-color: rgba(0,0,0,0.3);
+  color : #F5F5F5;
+}
+.navbar-right button:hover{
+  background-color: rgba(0,0,0,0.5);
+}
