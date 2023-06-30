@@ -51,7 +51,9 @@
     height: 150px;
     padding: 10px 10px;
 
-    border: 2px solid #D7D7D7;
+    border: 1px solid #D7D7D7;
+
+    margin-bottom: 15px;
 }
 
 .item-image-wrapper{
@@ -62,7 +64,7 @@
 }
 
 .item-info-wrapper{
-    width: calc(100% - 220px);
+    width: calc(100% - 200px);
 }
 
 .item-name{
