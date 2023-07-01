@@ -27,6 +27,10 @@
     border: none;
 }
 
+.main-tree .go-tree:hover {
+    background-color: #cccccc;
+}
+
 .main-info {
     background-color: #E1ECC8;
     width: auto;
