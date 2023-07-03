@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginForm from './components/LoginForm'
 import logo from "../../assets/분리배출.PNG"
+import '../../styles/Login.css'
 
 const Login = () => {
   return (
