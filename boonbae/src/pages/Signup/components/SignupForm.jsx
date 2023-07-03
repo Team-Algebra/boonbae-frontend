@@ -34,7 +34,7 @@ const SignupForm = () => {
     isIdDuplicate: `${process.env.REACT_APP_PROXY}/users/id/${formData.id}/exists`,
     isUsernameDuplicate: `${process.env.REACT_APP_PROXY}/users/username/${formData.username}/exists`,
     isReferralValid: `${process.env.REACT_APP_PROXY}/users/referrers?referrer=${formData.referralID}`,
-    signup: `${process.env.REACT_APP_PROXY}/users`
+    signup: `${process.env.REACT_APP_PROXY}/users/`
   };
 
   /**
@@ -73,18 +73,22 @@ const SignupForm = () => {
   const checkAvailability = async (field) => {
     const endpoint = apiEndpoints[field];
     if (!endpoint) return;
-
+  
     try {
       const response = await axios.get(endpoint);
       const isAvailable = response.data.exists;
-
+  
       if (field === 'isReferralValid') {
         if (isAvailable) {
+          setFormData((prevData) => ({
+            ...prevData,
+            [field]: true,
+          }));
           alert('사용이 가능합니다.');
         } else {
           setFormData((prevData) => ({
             ...prevData,
-            [field]: isAvailable,
+            [field]: false,
             referralID: '',
           }));
           alert('사용이 불가합니다.');
@@ -94,7 +98,7 @@ const SignupForm = () => {
           ...prevData,
           [field]: isAvailable,
         }));
-
+  
         if (isAvailable) {
           alert('사용이 불가합니다.');
         } else {
@@ -116,7 +120,6 @@ const SignupForm = () => {
 
     setIsSignupDisabled(!isDisabled);
   }, [formData]);
-
 
   /**
   * 회원가입을 처리합니다.
@@ -155,7 +158,6 @@ const SignupForm = () => {
       console.error('회원가입에 실패했습니다.', error);
     }
   };
-  
 
   return (
     <form className="signup-form">
