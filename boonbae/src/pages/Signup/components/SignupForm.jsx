@@ -124,18 +124,25 @@ const SignupForm = () => {
   */
   const handleSignup = async (e) => {
     e.preventDefault();
-
+  
     const endpoint = apiEndpoints.signup;
     if (!endpoint) return;
-
+  
+    if (!formData.isReferralValid) {
+      setFormData((prevData) => ({
+        ...prevData,
+        referralID: '',
+      }));
+    }
+  
     try {
       const response = await axios.post(endpoint, {
         id: formData.id,
         username: formData.username,
         password: formData.password,
-        referrer_id: formData.referralID,
+        referrer_id: formData.isReferralValid ? formData.referralID : '',
       });
-
+  
       if (response.status === 201) {
         alert('회원가입에 성공했습니다!');
         navigate('/login');
@@ -148,6 +155,7 @@ const SignupForm = () => {
       console.error('회원가입에 실패했습니다.', error);
     }
   };
+  
 
   return (
     <form className="signup-form">
