@@ -2,7 +2,7 @@ import { Comment } from "./Comment"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 
 
 const API_URL = process.env.REACT_APP_PROXY;
@@ -10,8 +10,7 @@ const API_URL = process.env.REACT_APP_PROXY;
 export const Comments = ({ item_id }) => {
 
     const [comments, setComments] = useState();
-
-
+    const commentInput = useRef();
 
     /**
      * 댓글목록 가져오는 함수
@@ -25,7 +24,6 @@ export const Comments = ({ item_id }) => {
                 setComments(constructComments(data.list))
             });
     }
-
 
     /**
      * 댓글 목록 생성
@@ -46,6 +44,26 @@ export const Comments = ({ item_id }) => {
         getComments();
     }, [])
 
+    const postComment = (e) => {
+        // return;
+        if(e.key !== "Enter" && e.type == "keyup") return;
+        // post comment
+        const commentContent = commentInput.current.value;
+        console.log(commentContent);
+        fetch(`${API_URL}/recycling/${item_id}/comments`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", },
+            body: JSON.stringify({ content: commentContent })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.status && data.status >= 500) throw new Error("서버 에러");
+                if (data.status && data.status >= 400) throw new Error("클라이언트 에러");
+                getComments();
+            })
+            .catch(err => { console.log(err);  alert("댓글 작성에 실패했습니다.")});
+    }
 
     return(
         <section className="info-comments">
@@ -55,8 +73,8 @@ export const Comments = ({ item_id }) => {
             </div>
 
             <div className="info-comments-input">
-                <input className="info-comments-input-content" placeholder="좋아요 한 개 당 에코 포인트 1pt가 적립됩니다." />
-                <button className="info-comments-input-button"><FontAwesomeIcon icon={faPaperPlane} size="2x" /></button>
+                <input className="info-comments-input-content" placeholder="좋아요 한 개 당 에코 포인트 1pt가 적립됩니다."  ref={commentInput} onKeyUp={postComment}/>
+                <button className="info-comments-input-button" onClick={postComment}><FontAwesomeIcon icon={faPaperPlane} size="2x" /></button>
             </div>
         </section>
     )
