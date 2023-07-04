@@ -182,6 +182,10 @@
     margin-right: 5px;
 }
 
+.info-comments-like-icon{
+    cursor: pointer;
+}
+
 .info-comments-like-icon>svg{
     color: #3CB371;
 }
