@@ -21,18 +21,20 @@ const EnquireRegist = () => {
         try {
             await axios({
                 method:'post',
-                url:'http://15.165.17.64:8080/api/v1/qna',
+                url: `${process.env.REACT_APP_PROXY}/qna`
+                ,
                 data: {
-                    title : title,
-                    qnaType : qnaType,
-                    description : description
+                    title : "title",
+                    qnaType : "qnaType",
+                    description : "description"
                 }
             })
             window.alert("등록되었습니다.");
             setTitle("");
-            setType("");
+            setQnaType("");
             setDescription("");
         } catch (error) {
+            window.alert("등록에 실패하였습니다.");
             console.log("에러내용 : ", error);
         } 
       }, [title, qnaType, description])
@@ -57,20 +59,20 @@ const EnquireRegist = () => {
                 <div className="input-type">분류</div>
                 <div className="qnaType-info">
                     <button 
-                        onClick={() => handleButtonClick('add_req')}
-                        className={qnaType === 'add_req' ? 'selected' : ''}
+                        onClick={() => handleButtonClick('ADD_REQUEST')}
+                        className={qnaType === 'ADD_REQUEST' ? 'selected' : ''}
                     >정보추가요청</button>
                     <button 
-                        onClick={() => handleButtonClick('put_req')}
-                        className={qnaType === 'put_req' ? 'selected' : ''}
+                        onClick={() => handleButtonClick('EDIT_REQUEST')}
+                        className={qnaType === 'EDIT_REQUEST' ? 'selected' : ''}
                     >정보수정요청</button>
                     <button 
-                        onClick={() => handleButtonClick('system_req')}
-                        className={qnaType === 'system_req' ? 'selected' : ''}
+                        onClick={() => handleButtonClick('SYSTEM_REQUEST')}
+                        className={qnaType === 'SYSTEM_REQUEST' ? 'selected' : ''}
                     >시스템요청</button>
                     <button 
-                        onClick={() => handleButtonClick('ect')}
-                        className={qnaType === 'ect' ? 'selected' : ''}
+                        onClick={() => handleButtonClick('ETC')}
+                        className={qnaType === 'ETC' ? 'selected' : ''}
                     >기타</button>
                 </div>
                 <div className="input-type">내용</div>
@@ -86,8 +88,8 @@ const EnquireRegist = () => {
                 </div>
             </div>
             <div className="button">
-                <button className="cancel-button" onClick={()=>{navigate('/enquire')}}>취소</button>
                 <button className="submit-button" onClick={canSubmit() ? handleSubmit : null}>게시</button>
+                <button className="cancel-button" onClick={()=>{navigate('/enquire')}}>취소</button>
             </div>
         </div>
     )

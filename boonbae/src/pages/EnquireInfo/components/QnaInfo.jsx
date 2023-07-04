@@ -21,9 +21,9 @@ const QnaInfo = ( {qnaInfo} ) => {
             <div className="qna-content">
                 <div className="qna-property1">분류</div>
                 <div className={`qnaType-info${qnaInfo.qnaType === "ADD_REQUEST" ? " active" : ""}`}>정보 추가</div>
-                <div className={`qnaType-info${qnaInfo.qnaType === "put_req" ? " active" : ""}`}>정보 수정</div>
-                <div className={`qnaType-info${qnaInfo.qnaType === "system_req" ? " active" : ""}`}>시스템</div>
-                <div className={`qnaType-info${qnaInfo.qnaType === "etc" ? " active" : ""}`}>기타</div>
+                <div className={`qnaType-info${qnaInfo.qnaType === "EDIT_REQUEST" ? " active" : ""}`}>정보 수정</div>
+                <div className={`qnaType-info${qnaInfo.qnaType === "SYSTEM_REQUEST" ? " active" : ""}`}>시스템</div>
+                <div className={`qnaType-info${qnaInfo.qnaType === "ETC" ? " active" : ""}`}>기타</div>
             </div>
             <div className="qna-content">
                 <div className="qna-property1">작성자</div>

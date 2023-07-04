@@ -8,6 +8,7 @@ const Table = () => {
 
     const navigate = useNavigate();
     
+    const [selectedFilter, setSelectedFilter] = useState("전체");
     const [qnaArray, setQnaArray] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 10;
@@ -16,29 +17,75 @@ const Table = () => {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        filterData();
+    }, [selectedFilter, qnaArray])
+
     const fetchData = () => {
         axios({
           method: "get",
-          url: "http://15.165.17.64:8080/api/v1/qna/?size=10&page=1"
+          url: `${process.env.REACT_APP_PROXY}/qna/`
         })
         .then((result) => {
-            setQnaArray(result.data);
+            setQnaArray(result.data.list);
         })
         .catch((error) => {
             console.log(error);
         });
     };
 
+    const filterData = () => {
+        const filteredData =
+            selectedFilter === "전체"
+            ? qnaArray
+            : qnaArray.filter((data) => {
+                if ( selectedFilter === "최신순") {
+                    return true;
+                } else if ( selectedFilter === "정보추가요청" && data.qnaType === "ADD_REQUEST" ) {
+                    return true;
+                } else if ( selectedFilter === "정보수정요청" && data.qnaType === "EDIT_REQUEST" ) {
+                    return true;
+                } else if ( selectedFilter === "시스템" && data.qnaType === "SYSTEM_REQUEST" ) {
+                    return true;
+                } else if ( selectedFilter === "기타" && data.qnaType === "ETC" ) {
+                    return true;D
+                } 
+                return false;
+            });
+
+        if (selectedFilter === "최신순") {
+            return filteredData.sort(
+                (a, b) => new Date(a.createAt) - new Date(b.createAt)
+            );
+        }
+        return filteredData;    
+    }
+
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
-    const currentData = qnaArray.slice(startIndex, endIndex);
+    const currentData = filterData().slice(startIndex, endIndex);
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     }
 
+    const handleFilterChange = (event) => {
+        setSelectedFilter(event.target.value);
+    };
+
     return (
         <div>
+            <div className="qna-filter">
+                <select value={selectedFilter} onChange={handleFilterChange}>
+                    <option value="전체">전체</option>
+                    <option value="최신순">최신순</option>
+                    <option value="답변완료">답변완료</option>
+                    <option value="정보추가요청">정보추가요청</option>
+                    <option value="정보수정요청">정보수정요청</option>
+                    <option value="시스템">시스템</option>
+                    <option value="기타">기타</option>
+                </select>
+            </div>
             <div className="qna-table">
                 <table>
                     <thead>
@@ -54,12 +101,12 @@ const Table = () => {
                         {currentData.map((data) => (
                             <tr key={data.qnaPk} onClick={()=>{navigate(`/enquire/${data.qnaPk}`)}}>
                                 <td className="qnaType">
-                                    {data.qnaType === "add_req"
-                                        ? "정보추가 요청"
-                                        : data.qnaType === "put_req"
-                                        ? "정보수정 요청"
-                                        : data.qnaType === "system_req"
-                                        ? "시스템 오쳥"
+                                    {data.qnaType === "ADD_REQUEST"
+                                        ? "정보추가요청"
+                                        : data.qnaType === "EDIT_REQUEST"
+                                        ? "정보수정요청"
+                                        : data.qnaType === "SYSTEM_REQUEST"
+                                        ? "시스템"
                                         : "기타"
                                     }
                                 </td>
@@ -76,7 +123,7 @@ const Table = () => {
             <Paging
                 currentPage={currentPage}
                 pageSize={pageSize}
-                qnaArray={qnaArray}
+                qnaArray={currentData}
                 handlePageChange={handlePageChange}
             />
             
