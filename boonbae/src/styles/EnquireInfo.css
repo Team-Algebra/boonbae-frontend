@@ -49,7 +49,14 @@
     background-color: #E1ECC8;
 }
 
-.qna-content .qnaType-info, 
+.qna-content .qnaType-info {
+    width: 18.665%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1rem;
+    border: 1px solid gray;
+}
+
 .qna-content .userName-info, 
 .qna-content .createAt-info {
     width: 25%;

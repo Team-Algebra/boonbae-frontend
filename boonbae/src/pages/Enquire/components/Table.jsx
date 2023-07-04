@@ -16,30 +16,17 @@ const Table = () => {
         fetchData();
     }, []);
 
-    // const fetchData = () => {
-    //     axios({
-    //       method: "get",
-    //       url: "http://15.165.17.64:8000/api/v1/qna"
-    //     })
-    //     .then((result) => {
-    //         setQnaArray(result.data);
-    //     })
-    //     .catch((error) => {
-    //         console.log(error);
-    //     });
-    // };
-
     const fetchData = () => {
-        const dataArray = Array.from({ length: 128 }, (_, index) => ({
-          qnaPk: index + 1,
-          qnaType: `정보문의요청`,
-          status: `대기`,
-          title: `제목 ${index + 1}`,
-          userName: `작성자 ${index + 1}`,
-          createAt: `2023.06.06`,
-        }));
-      
-        setQnaArray(dataArray);
+        axios({
+          method: "get",
+          url: "http://15.165.17.64:8080/api/v1/qna/?size=10&page=1"
+        })
+        .then((result) => {
+            setQnaArray(result.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     };
 
     const startIndex = (currentPage - 1) * pageSize;
@@ -66,11 +53,20 @@ const Table = () => {
                     <tbody>    
                         {currentData.map((data) => (
                             <tr key={data.qnaPk} onClick={()=>{navigate(`/enquire/${data.qnaPk}`)}}>
-                                <td className="qnaType">{data.qnaType}</td>
-                                <td className="status">{data.status}</td>
+                                <td className="qnaType">
+                                    {data.qnaType === "add_req"
+                                        ? "정보추가 요청"
+                                        : data.qnaType === "put_req"
+                                        ? "정보수정 요청"
+                                        : data.qnaType === "system_req"
+                                        ? "시스템 오쳥"
+                                        : "기타"
+                                    }
+                                </td>
+                                <td className="status">{data.status == "answerred" ? ("완료") : ("대기")}</td>
                                 <td className="title">{data.title}</td>
                                 <td className="userName">{data.userName}</td>
-                                <td className="createAt">{data.createAt}</td>
+                                <td className="createAt">{data.createAt.split("T")[0]}</td>
                             </tr>
                         ))}         
                     </tbody>

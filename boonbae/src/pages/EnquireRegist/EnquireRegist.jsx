@@ -57,17 +57,21 @@ const EnquireRegist = () => {
                 <div className="input-type">분류</div>
                 <div className="qnaType-info">
                     <button 
-                        onClick={() => handleButtonClick('정보추가요청')}
-                        className={qnaType === '정보추가요청' ? 'selected' : ''}
+                        onClick={() => handleButtonClick('add_req')}
+                        className={qnaType === 'add_req' ? 'selected' : ''}
                     >정보추가요청</button>
                     <button 
-                        onClick={() => handleButtonClick('정보수정요청')}
-                        className={qnaType === '정보수정요청' ? 'selected' : ''}
+                        onClick={() => handleButtonClick('put_req')}
+                        className={qnaType === 'put_req' ? 'selected' : ''}
                     >정보수정요청</button>
                     <button 
-                        onClick={() => handleButtonClick('정보문의요청')}
-                        className={qnaType === '정보문의요청' ? 'selected' : ''}
-                    >정보문의요청</button>
+                        onClick={() => handleButtonClick('system_req')}
+                        className={qnaType === 'system_req' ? 'selected' : ''}
+                    >시스템요청</button>
+                    <button 
+                        onClick={() => handleButtonClick('ect')}
+                        className={qnaType === 'ect' ? 'selected' : ''}
+                    >기타</button>
                 </div>
                 <div className="input-type">내용</div>
                 <div>

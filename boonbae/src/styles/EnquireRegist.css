@@ -48,7 +48,7 @@
 }
 
 .regist-input .qnaType-info button {
-    width: 26.666%;
+    width: 20%;
     height: 40px;
     background-color: #eeeeee;
     border: 1px solid gray;
@@ -75,7 +75,7 @@
 }
 
 .button button:hover {
-    background-color: #ededed;
+    background-color: #e6e6e6;
 }
 
 .button .cancel-button {
