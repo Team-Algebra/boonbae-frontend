@@ -48,7 +48,7 @@ const Table = () => {
                 } else if ( selectedFilter === "시스템" && data.qnaType === "SYSTEM_REQUEST" ) {
                     return true;
                 } else if ( selectedFilter === "기타" && data.qnaType === "ETC" ) {
-                    return true;D
+                    return true;
                 } 
                 return false;
             });
