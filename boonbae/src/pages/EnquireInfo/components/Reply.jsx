@@ -1,4 +1,7 @@
 import { useState, useCallback } from "react";
+import axios from "axios";
+
+const API = process.env.REACT_APP_PROXY;
 
 const Reply = ({ qnaPk, isReply }) => {
 
@@ -12,7 +15,7 @@ const Reply = ({ qnaPk, isReply }) => {
         try {
             await axios({
                 method:'post',
-                url:`http://15.165.17.64:8000/api/v1/qna/${qnaPk}/reply`,
+                url:`${API}/qna/${qnaPk}/reply`,
                 data: {
                     reply: reply,
                 }
