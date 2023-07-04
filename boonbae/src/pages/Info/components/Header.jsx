@@ -7,7 +7,8 @@ export const Header = ({ item }) => {
         if(item.name === undefined) return;
         setItemInfo({
             item_name: item.name, item_tags: item.tags,
-            item_type: item.types, item_views: item.viewCnt
+            item_type: item.types, item_views: item.viewCnt,
+            item_img : item.imageUrl
         })
     }, [item])
 
@@ -17,7 +18,7 @@ export const Header = ({ item }) => {
                 
             <div className="info-header-item">
                 <div className="info-header-img-wrapper">
-                    <img className="info-header-img" src="https://via.placeholder.com/150" />
+                    <img className="info-header-img" src={itemInfo.item_img == "string" ? "https://via.placeholder.com/150" : itemInfo.item_img} />
                 </div>
                 <div className="info-header-item-title">
                     <div>{ itemInfo.item_name }</div>
