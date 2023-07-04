@@ -1,0 +1,115 @@
+.qna {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 50px 300px
+}
+
+.qna-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 2rem;
+}
+
+/* QnaInfo */
+.qna-info {
+    margin: 20px 0px;
+}
+
+.qna-content {
+    display: flex;
+}
+
+.qna-property1, .qna-property2 {
+    height: 50px;
+    line-height: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 1px solid gray;
+    background-color: #D9D9D9;
+}
+
+.qna-property1 {
+    width: 25%;
+}
+
+.qna-property2 {
+    width: 100%;
+}
+
+.title-info {
+    width: 75%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1rem;
+    border: 1px solid gray;
+}
+
+.active {
+    background-color: #E1ECC8;
+}
+
+.qna-content .qnaType-info, 
+.qna-content .userName-info, 
+.qna-content .createAt-info {
+    width: 25%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1rem;
+    border: 1px solid gray;
+}
+
+.description-info, .replyText-info {
+    width: 96.6%;
+    height: 200px;
+    line-height: 50px;
+    font-size: 1rem;
+    border: 1px solid gray;
+    text-align: left;
+    padding: 0 15px;
+}
+
+/* reply */
+
+.qna-reply {
+    width: 100%;
+    height: 200px;
+    border: 1px solid gray;
+    background-color: #D9D9D9;
+}
+
+.qna-reply-header {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 25px;
+    text-align: left;
+}
+
+.qna-reply-input {
+    text-align: left;
+    margin-left: 25px;
+}
+
+.qna-reply-input textarea {
+    width: 80%;
+    height: 100px;
+    font-size: 1rem;
+}
+
+.qna-reply-input button {
+    position: relative;
+    top: -48px;
+    width: 14%;
+    height: 100px;
+    margin-left: 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #000000;
+    opacity: 0.4;
+    border: 1px solid gray;
+}
+
+.qna-reply-input button:hover {
+    background-color: #000000;
+    opacity: 0.5;
+}
