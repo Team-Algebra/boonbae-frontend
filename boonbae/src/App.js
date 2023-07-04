@@ -3,7 +3,9 @@ import './styles/App.css';
 
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
-import { Main, Enquire, EnquireInfo, EnquireRegist, Fund, Info, Search, Tree } from './pages';
+
+import { Main, Enquire, EnquireInfo, EnquireRegist, Fund, Info, Search, Tree, Signup } from './pages';
+
 import Navbar from './components/Navbar';
 
 const App = () => {
@@ -20,6 +22,7 @@ const App = () => {
 					<Route path="/info" element={<Info />} />
 					<Route path="/search" element={<Search />} />
 					<Route path="/tree" element={<Tree />} />
+					<Route path="/signup" element={<Signup />} />
 				</Routes>
 			</BrowserRouter>
 			

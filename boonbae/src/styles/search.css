@@ -1,0 +1,163 @@
+.search-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-input-wrapper{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 60%;
+    max-width: 500px;
+
+    padding: 10px 10px;
+    border: 1px solid #727272;
+    border-radius: 92px;
+}
+
+.search-input {
+    border: 0px;
+    margin-left: 10px;
+    font-size: 1rem;
+    width: 80%;
+    height: 40px;
+    text-align: center;
+}
+
+.search-result-count-wrapper{
+    margin-top: 10px;
+    font-size: 1rem;
+}
+.search-result-count{
+    font-weight: 600;
+}
+
+.search-result-wrapper{
+    margin-top: 80px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    width: 65%;
+    max-width: 600px;
+    height: 150px;
+    padding: 10px 10px;
+
+    border: 1px solid #D7D7D7;
+
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.item-image-wrapper{
+    width: 150px;
+    height: 150px;
+
+    margin-right: 20px;
+}
+
+.item-info-wrapper{
+    width: calc(100% - 200px);
+}
+
+.item-name{
+    font-size: 2rem;
+    /* font-weight: 600; */
+
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+    display: inline-block;
+}
+.item-type{
+    display: inline-block;
+}
+
+.item-tag{
+    color: #8B8B8B;
+}
+
+.item-line-item{
+    color: #E6E6E6;
+}
+
+
+
+
+.search-main-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 50px;
+}
+
+.search-rank-wrapper{
+    width: 65%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 70px;
+}
+
+.search-rank-title{
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.search-rank-list{
+    padding: 0;
+    margin: 0;
+}
+
+.search-rank-list > li{
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.search-honeytip-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+
+    width: 65%;
+    max-width: 500px;
+    height: 100px;
+
+    border: 1px solid #D7D7D7;
+
+    padding: 10px 20px;
+}
+
+.search-honeytip-icon{
+    color: #FFD600;
+}
+
+.search-honeytip-content-wrapper{
+    display: flex;
+    margin-left: 15px;
+    width: 80%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center ;
+}
+
+.search-honeytip-title{
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
