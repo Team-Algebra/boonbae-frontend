@@ -53,11 +53,11 @@ const Table = () => {
                 return false;
             });
 
-        if (selectedFilter === "최신순") {
-            return filteredData.sort(
-                (a, b) => new Date(a.createAt) - new Date(b.createAt)
-            );
-        }
+            if (selectedFilter === "최신순") {
+                return filteredData.sort(
+                    (a, b) => new Date(b.createAt) - new Date(a.createAt)
+                );
+            }
         return filteredData;    
     }
 
