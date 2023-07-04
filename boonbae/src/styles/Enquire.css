@@ -1,0 +1,126 @@
+.enquire {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 50px 300px
+}
+
+.enquire-header {
+    width: 100%;
+    height: 80px;
+    font-size: 2rem;
+    line-height: 80px;
+    border: 1px solid black;
+}
+
+.regist-button {
+    width: 90px;
+    height: 40px;
+    background-color: #3CB371;
+    opacity: 0.6;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    margin-left: auto;
+}
+
+.regist-button:hover {
+    opacity: 0.7;
+}
+
+/* Filter */
+.qna-filter {
+    margin-top: 50px;
+    text-align: right;
+}
+
+.qna-filter select {
+    width: 150px;
+    height: 30px;
+}
+
+/* table */
+.qna-table {
+    height: 520px;
+}
+
+table {
+    width: 100%;
+    border: 1px solid #444444;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table th {
+    background-color: #D9D9D9;
+}
+
+table tr {
+    height: 45px;
+}
+
+table td {
+    cursor: pointer;
+}
+
+table th, tr {
+    border-bottom: 1px solid #444444;
+}
+
+table td.qnaType {
+    width: 130px;
+}
+
+table td.status {
+    width: 85px;
+}
+
+table td.title {
+    text-align: left;
+    padding: 0 10px;
+}
+
+table td.userName {
+    width: 120px;
+}
+
+table td.createAt {
+    width: 120px;
+}
+
+/* qna-table-bottom */
+
+.qna-table-bottom {
+    display: flex;
+    align-items: center;
+    margin-left: 250px
+}
+
+/* pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination li {
+    list-style: none;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #e2e2e2;
+    line-height: 30px;
+    font-size: 1rem;
+}
+
+.pagination li a {
+    text-decoration: none;
+    color: #337ab7;
+}
+
+.pagination li.active a {
+    color: white;
+}
+.pagination li.active {
+    background-color: #D5E6F5;
+}
+
