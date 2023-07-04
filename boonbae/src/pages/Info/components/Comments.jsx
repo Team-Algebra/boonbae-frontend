@@ -2,7 +2,7 @@ import { Comment } from "./Comment"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef, useCallback } from "react"
 
 
 const API_URL = process.env.REACT_APP_PROXY;
@@ -15,7 +15,7 @@ export const Comments = ({ item_id }) => {
     /**
      * 댓글목록 가져오는 함수
      */
-    const getComments = () => {
+    const getComments = useCallback( () => {
         // get comments
         // 테스트를 위해 임시로 2번 아이템의 댓글을 가져옴
         fetch(`${API_URL}/recycling/${item_id}/comments`)
@@ -23,7 +23,7 @@ export const Comments = ({ item_id }) => {
             .then(data => {
                 setComments(constructComments(data.list))
             });
-    }
+    }, [item_id])
 
     /**
      * 댓글 목록 생성
@@ -42,11 +42,11 @@ export const Comments = ({ item_id }) => {
     useEffect(() => {
         // console.log("1. 댓글 가져오기")
         getComments();
-    }, [])
+    }, [getComments])
 
     const postComment = (e) => {
         // return;
-        if(e.key !== "Enter" && e.type == "keyup") return;
+        if(e.key !== "Enter" && e.type === "keyup") return;
         // post comment
         const commentContent = commentInput.current.value;
         console.log(commentContent);

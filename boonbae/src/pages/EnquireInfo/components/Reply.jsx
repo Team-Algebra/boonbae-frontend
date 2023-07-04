@@ -8,7 +8,7 @@ const Reply = ({ qnaPk, isReply }) => {
     const [reply, setReply] = useState();
 
     const canSubmit = useCallback(() => {
-        return reply !== "" && isReply != 1;
+        return reply !== "" && isReply !== 1;
     }, [reply, isReply]);
 
     const handleSubmit = useCallback(async () => {
@@ -26,7 +26,7 @@ const Reply = ({ qnaPk, isReply }) => {
             window.alert("등록에 실패하였습니다.");
             console.log("에러내용 : ", error);
         }
-    }, [reply])
+    }, [reply, qnaPk])
 
     return (
         <div className="qna-reply">
