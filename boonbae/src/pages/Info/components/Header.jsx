@@ -18,7 +18,7 @@ export const Header = ({ item }) => {
                 
             <div className="info-header-item">
                 <div className="info-header-img-wrapper">
-                    <img className="info-header-img" src={itemInfo.item_img == "string" ? "https://via.placeholder.com/150" : itemInfo.item_img} />
+                    <img className="info-header-img" alt="" src={itemInfo.item_img === "string" ? "https://via.placeholder.com/150" : itemInfo.item_img} />
                 </div>
                 <div className="info-header-item-title">
                     <div>{ itemInfo.item_name }</div>

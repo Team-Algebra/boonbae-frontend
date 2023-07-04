@@ -17,7 +17,7 @@ const Info = () => {
         fetch(`${process.env.REACT_APP_PROXY}/recycling/${infoid}`)
             .then(res => res.json())
             .then(data => {setItem(data);});
-    }, [])
+    }, [infoid])
 
     return (
         <section className="info">  
