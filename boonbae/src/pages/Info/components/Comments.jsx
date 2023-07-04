@@ -22,7 +22,6 @@ export const Comments = ({ item_id }) => {
         fetch(`${API_URL}/recycling/${item_id}/comments`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 setComments(constructComments(data.list))
             });
     }
@@ -37,14 +36,7 @@ export const Comments = ({ item_id }) => {
     const constructComments = (comment_items) => {
         // construct comments
         return comment_items.map(comment => {
-            return <Comment
-                comment={{
-                    user: comment.username,
-                    content: comment.content,
-                    like: comment.like_cnt
-                }}
-                key={comment.comment_pk}
-            />
+            return <Comment comment={comment} key={comment.comment_pk} />
         })
     }
 
