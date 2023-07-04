@@ -1,5 +1,4 @@
 .main-tree {
-    background-color: #F7FFE5;
     width: auto;
     height: 500px;
     text-align: center;
@@ -32,7 +31,7 @@
 }
 
 .main-info {
-    background-color: #E1ECC8;
+    background-color: #ececec;
     width: auto;
     height: 400px;
     text-align: center;
