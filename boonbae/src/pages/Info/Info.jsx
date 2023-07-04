@@ -1,6 +1,17 @@
+import { Header } from "./components/Header";
+import { Body } from "./components/Body";
+import { Comments } from "./components/Comments";
+
+import "../../styles/Info.css";
+
 const Info = () => {
     return (
-        <h1>분리배출 정보 페이지입니다.</h1>
+        <section className="info">  
+            <Header />
+            <Body />
+            <Comments />
+        </section>
+        
     )
 }
 
