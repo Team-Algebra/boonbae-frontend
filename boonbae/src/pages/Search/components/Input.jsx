@@ -6,7 +6,7 @@ import "../../../styles/search.css"
 
 const Input = ({ setItem }) => {
     const search = (e) => {
-        let keyword = e.target.value;
+        // let keyword = e.target.value;
 
         setItem([{
             name: "테스트",

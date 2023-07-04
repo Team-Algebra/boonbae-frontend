@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom"
 import axios from "axios"
 import QnaInfo from "./components/QnaInfo"
@@ -11,22 +11,22 @@ const EnquireInfo = () => {
     const {qnaPk} = useParams();
     const [qnaInfo, setQnaInfo] = useState();
 
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    const fetchData = () => {
+    const fetchData = useCallback(() => {
         axios({
             method: "get",
             url: `${process.env.REACT_APP_PROXY}/qna/${qnaPk}`
         })
-        .then((result)=>{
-            setQnaInfo(result.data)
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
-    }
+            .then((result) => {
+                setQnaInfo(result.data)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }, [qnaPk]);
+
+    useEffect(() => {
+        fetchData();
+    }, [fetchData]);
 
     return (
         <div className="qna">

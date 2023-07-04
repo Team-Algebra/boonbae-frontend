@@ -39,7 +39,7 @@ const EnquireRegist = () => {
             window.alert("등록에 실패하였습니다.");
             console.log("에러내용 : ", error);
         } 
-      }, [title, qnaType, description])
+      }, [])
 
     return (
         <div className="enquire-regist">
