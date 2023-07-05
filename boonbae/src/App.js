@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Main, Enquire, Fund, Info, Search, Tree, Signup, Login} from './pages';
 import Navbar from './components/Navbar';
 import { useUserStore } from './stores/userStore';
+import PrivateRoute from './components/PrivateRoute';
 
 const App = () => {
 
@@ -28,7 +29,7 @@ const App = () => {
 					<Route path="/fund" element={<Fund />} />
 					<Route path="/info" element={<Info />} />
 					<Route path="/search" element={<Search />} />
-					<Route path="/tree" element={<Tree />} />
+					<Route path="/tree" element={<PrivateRoute component={<Tree/>}/>} />
 					<Route path="/signup" element={<Signup />} />
 					<Route path="/login" element={<Login />} />
 				</Routes>
