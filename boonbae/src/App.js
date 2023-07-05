@@ -1,12 +1,23 @@
-import logo from './logo.svg';
 import './styles/App.css';
 
+import React, {useEffect} from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 import { Main, Enquire, Fund, Info, Search, Tree, Signup, Login} from './pages';
 import Navbar from './components/Navbar';
+import { useUserStore } from './stores/userStore';
 
 const App = () => {
+
+	const {checkValid} = useUserStore();
+	
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if(token){
+      checkValid(token);
+    }
+  }, []);
+
 	return (
 		<>
 			<BrowserRouter>
@@ -22,7 +33,6 @@ const App = () => {
 					<Route path="/login" element={<Login />} />
 				</Routes>
 			</BrowserRouter>
-			
 		</>
 	)
 }

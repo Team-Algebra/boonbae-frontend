@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
+import {useUserStore} from '../../../stores/userStore'
 
 const LoginForm = () => {
-
+  
+  const {setUser} = useUserStore();
   const [formData, setFormData] = useState({
     id : '',
     password : '',
@@ -26,9 +28,10 @@ const LoginForm = () => {
         id : formData.id,
         password : formData.password
       });
-      const token = response.data.token;
-      localStorage.setItem('token', token);
       if (response.status === 200) {
+        const token = response.data.token;
+        setUser(response.data.user)
+        localStorage.setItem('token', token);
         navigate('/');
       }else {
         alert('로그인에 실패했습니다.');
