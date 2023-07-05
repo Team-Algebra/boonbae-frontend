@@ -119,7 +119,7 @@ const SignupForm = () => {
       formData.password === formData.confirmPassword;
 
     setIsSignupDisabled(!isDisabled);
-  }, [formData]);
+  }, [formData, regex.password_reg]);
 
   /**
   * 회원가입을 처리합니다.

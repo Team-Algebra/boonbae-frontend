@@ -1,6 +1,14 @@
+import "../../styles/Enquire.css"
+import Table from "./components/Table";
+
 const Enquire = () => {
     return (
-        <h1>정보 요청 (Q&A) 페이지입니다.</h1>
+        <div className="enquire">
+            <div className="enquire-header">
+                Q&A 게시판
+            </div>
+            <Table></Table>
+        </div>
     )
 }
 
