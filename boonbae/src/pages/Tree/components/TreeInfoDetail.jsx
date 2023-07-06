@@ -2,6 +2,8 @@ import React,{useState} from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {faMagnifyingGlassPlus} from "@fortawesome/free-solid-svg-icons"
 import Modal from './Modal';
+import ExplainTier from './ExplainTier';
+import ExplainEcopoint from './ExplainEcopoint';
 
 const TreeInfoDetail = ({img, span_name, span_value}) => {
 
@@ -46,7 +48,8 @@ const TreeInfoDetail = ({img, span_name, span_value}) => {
         span_name === '사용자 티어' ? calculateTier(span_value): span_value
       }</span>
       <Modal isOpen={isModalOpen} closeModal={closeModal}>
-
+        {span_name === '사용자 티어' && <ExplainTier />}
+        {span_name === '에코 포인트' && <ExplainEcopoint />}
       </Modal>
     </div>
   );
