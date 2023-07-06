@@ -73,3 +73,23 @@
   margin : 1vw 0;
   border-radius: 1rem;
 }
+/* TreeInfoDetail Component */
+.tree-infodetail{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2vh;
+  padding: 0vh 5vw;
+}
+#infodetail-left{
+  display: flex;
+  align-items: center;  
+}
+#infodetail-left > img{
+  width : 3vw;
+  height : 3vw;
+  margin-right : 3vw;
+}
+#infodetail-left > span{
+  margin-right : 1vw;
+}

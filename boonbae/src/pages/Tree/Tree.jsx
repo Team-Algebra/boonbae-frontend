@@ -9,6 +9,7 @@ const Tree = () => {
 		{
 			all_cnt : 0,
 			current_exp : 0,
+			eco_point : 0,
 			is_watching_ad : false,
 			rank : 1,
 			recycle_cnt : 0,
