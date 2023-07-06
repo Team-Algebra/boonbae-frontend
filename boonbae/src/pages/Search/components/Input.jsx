@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -8,12 +9,23 @@ const Input = ({ setItem }) => {
     const search = (e) => {
         // let keyword = e.target.value;
 
-        setItem([{
-            name: "테스트",
-            type: "테스트",
-            tag: ["테스트", "테스트"],
-            image: "https://via.placeholder.com/150",
-        }])
+        axios(`${process.env.REACT_APP_PROXY}/recycling/search?q=테스트`)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.count === 0) return setItem([]);
+
+                let info = res.data?.infoList.map((item, index) => {
+                    return {
+                        pk: item.pk,
+                        name: item.name,
+                        type: item.types.length > 0 ? item.types[0] : "기타",
+                        tag: item.tags,
+                        image: item.imageUrl ? item.imageUrl : "https://via.placeholder.com/150",
+                    }
+                });
+
+                setItem(info);
+            });
     }
 
 
