@@ -6,7 +6,7 @@ import TreeInfoButton from './TreeInfoButton'
 const TreeInfo = ({myTreeInfo}) => {
   return (
     <div className='tree-info'>
-      <TreeInfoHeader/>
+      <TreeInfoHeader exp={myTreeInfo.current_exp}/>
       <TreeInfoDetail/>
       <div>
         <TreeInfoButton/>
