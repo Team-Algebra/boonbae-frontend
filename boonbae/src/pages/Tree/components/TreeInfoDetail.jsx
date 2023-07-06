@@ -1,8 +1,13 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {faMagnifyingGlassPlus} from "@fortawesome/free-solid-svg-icons"
+import Modal from './Modal';
 
 const TreeInfoDetail = ({img, span_name, span_value}) => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const calculateTier = (percentage) => {
     if (percentage < 5) {
@@ -30,12 +35,19 @@ const TreeInfoDetail = ({img, span_name, span_value}) => {
         <img src={img} alt='Tree_icon'></img>
         <span>{span_name}</span>
         {
-          ['사용자 티어', '에코 포인트'].includes(span_name) && <FontAwesomeIcon icon={faMagnifyingGlassPlus}/>
+          ['사용자 티어', '에코 포인트'].includes(span_name) && 
+          <FontAwesomeIcon 
+            icon={faMagnifyingGlassPlus}
+            onClick={openModal}
+          />
         }
       </div>
       <span>{
         span_name === '사용자 티어' ? calculateTier(span_value): span_value
       }</span>
+      <Modal isOpen={isModalOpen} closeModal={closeModal}>
+
+      </Modal>
     </div>
   );
 };
