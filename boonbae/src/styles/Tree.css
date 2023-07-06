@@ -1,0 +1,27 @@
+.tree {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding : 5vh 0;
+  font-size: 1rem;
+}
+.tree-imgwrapper {
+  border: 2px solid black;
+  width: 35vw;
+  height: 50vh;
+  margin: 0 1vw;
+  padding : 2vh 2vw;
+}
+.tree-progressbar{
+  border : 2px solid black;
+  height: 10vh;
+  margin : 0 1vw;
+}
+/* TreeInfo component */
+.tree-info {
+  border: 2px solid #D9D9D9;
+  border-radius: 1rem;
+  width: 35vw;
+  height: 60vh;
+  padding : 2vh 2vw;
+}
