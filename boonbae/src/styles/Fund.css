@@ -1,0 +1,66 @@
+.fund-item{
+    display: flex;
+    flex-direction: column;
+
+    width: 200px;
+
+    margin: 20px 40px;
+    cursor: pointer;
+}
+
+.fund-item-img-wrapper{
+    width: 100%;
+    height: 210px;
+    border: 1px solid #000;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.fund-item-img-wrapper img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fund-item-content{
+    width: 100%;
+}
+
+.fund-item-category{
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.fund-item-title{
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.fund-item-description{
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.fund-item-progress{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.fund-item-progress-detail{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.fund-item-progress-detail > span > span:first-child{
+    color: red;
+}
+
+.fund-item-progress-bar{
+    width: 100%;
+    height: 3px;
+    background-color: red;
+    border-radius: 5px;
+}
