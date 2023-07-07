@@ -29,22 +29,34 @@ const FundRegist = () => {
         }
 
         if (selectedCategory === "제품") {
-            setSecondCategoryList(["화장품", "음식", "전자제품"])
+            setSecondCategoryList([
+                { name: "화장품", pk: 0 },
+                { name: "음식", pk: 1 },
+                { name: "전자제품", pk: 2 }
+            ]);
         } else if (selectedCategory === "캠페인") {
-            setSecondCategoryList(["봉사활동", "후원"])
+            setSecondCategoryList([
+                { name: "봉사활동", pk: 3 },
+                { name: "후원", pk: 4 }
+            ]);
         } else {
             setSecondCategoryList([]);
         }
-    }
+    };
 
     const handleSecondCategory = (event) => {
         const selectedCategory = event.target.value;
+        const selectedPk = secondCategoryList.find(
+            (option) => option.name === selectedCategory
+        )?.pk;
+
         if (selectedCategory === "") {
             window.alert("2차 카테고리를 선택하세요.");
         } else {
-            setSecondCategory(selectedCategory);
+            setSecondCategory(selectedPk);
+            console.log(selectedPk);
         }
-    }
+    };
 
     const handleContactWrite = async () => {
         try {
@@ -108,8 +120,13 @@ const FundRegist = () => {
         setMainImage(e.target.files[0]);
     };
 
+    const handleIntroductionChange = (newContent) => {
+        setIntroduction(newContent);
+    };
+
     return (
         <div className="fund-regist">
+            <div className="fund-regist-header">프로젝트 올리기</div>
             <div className="main-image-select">
                 <input type="file" onChange={handleFileChange}></input>
             </div>
@@ -133,8 +150,8 @@ const FundRegist = () => {
                         <select value={secondCategory} onChange={handleSecondCategory}>
                             <option value="">2차 카테고리</option>
                             {secondCategoryList.map((option) => (
-                                <option value={option}>
-                                    {option}
+                                <option key={option.pk} value={option.name}>
+                                    {option.name}
                                 </option>
                             ))}
                         </select>
@@ -142,7 +159,7 @@ const FundRegist = () => {
                 </div>
                 <div className="fund-introduction">
                     <div className="fund-info-type2">펀딩 소개</div>
-                    <textarea onChange={(e) => { e.target.value }}></textarea>
+
                 </div>
                 <div className="fund-target-amount">
                     <div className="fund-info-type1">목표 금액</div>
