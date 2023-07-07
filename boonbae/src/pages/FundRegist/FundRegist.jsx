@@ -34,14 +34,22 @@ const FundRegist = () => {
 
         if (selectedCategory === "제품") {
             setSecondCategoryList([
-                { name: "화장품", pk: 0 },
-                { name: "음식", pk: 1 },
-                { name: "전자제품", pk: 2 }
+                { name: "화장품", pk: 1 },
+                { name: "패션/잡화", pk: 2 },
+                { name: "음식", pk: 3 },
+                { name: "전자제품", pk: 4 },
+                { name: "의류", pk: 5 },
+                { name: "기타", pk: 6 }
             ]);
         } else if (selectedCategory === "캠페인") {
             setSecondCategoryList([
-                { name: "봉사활동", pk: 3 },
-                { name: "후원", pk: 4 }
+                { name: "봉사활동", pk: 7 },
+                { name: "후원", pk: 8 },
+                { name: "기타", pk: 9 }
+            ]);
+        } else if (selectedCategory === "기타") {
+            setSecondCategoryList([
+                { name: "기타", pk: 10 },
             ]);
         } else {
             setSecondCategoryList([]);
@@ -252,6 +260,7 @@ const FundRegist = () => {
                             <option value="">1차 카테고리</option>
                             <option value="제품">제품</option>
                             <option value="캠페인">캠페인</option>
+                            <option value="기타">기타</option>
                         </select>
                         <select value={secondCategory} onChange={handleSecondCategory}>
                             <option value="">2차 카테고리</option>
