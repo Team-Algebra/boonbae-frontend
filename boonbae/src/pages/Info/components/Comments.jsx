@@ -9,7 +9,7 @@ const API_URL = process.env.REACT_APP_PROXY;
 
 export const Comments = ({ item_id }) => {
 
-    const [comments, setComments] = useState();
+    const [comments, setComments] = useState([]);
     const commentInput = useRef();
 
     /**
@@ -67,7 +67,7 @@ export const Comments = ({ item_id }) => {
 
     return(
         <section className="info-comments">
-            <div className="info-comments-header">댓글(15개)</div>
+            <div className="info-comments-header">댓글({comments.length}개)</div>
             <div className="info-comments-body">
                 {comments}
             </div>
