@@ -16,6 +16,9 @@ const Fund = () => {
         query += `?sort=${fundSearch.sort}`;
         query += `&PageNumber=${fundSearch.page-1}`;
         query += `&PageSize=${page_size}`;
+        if (fundSearch.keyword !== "") {
+            query += `&TitleSearch=${fundSearch.keyword}`;
+        }
         if(fundSearch.category !== "all") {
             query += `&FirstCategory=${fundSearch.category}`;
         }
