@@ -1,5 +1,7 @@
+
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLightbulb } from '@fortawesome/free-solid-svg-icons'
@@ -15,6 +17,7 @@ export const Main = () => {
                 console.log(res.data)
                 setRankItems(res.data?.rank)
             });
+
     }, [])
 
     // get honeytip
