@@ -52,7 +52,10 @@ export const Comments = ({ item_id }) => {
         console.log(commentContent);
         fetch(`${API_URL}/recycling/${item_id}/comments`, {
             method: "POST",
-            headers: { "Content-Type": "application/json", },
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
             body: JSON.stringify({ content: commentContent })
         })
             .then(res => res.json())
