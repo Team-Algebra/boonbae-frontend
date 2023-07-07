@@ -12,6 +12,7 @@ const Fund = () => {
     const navigate = useNavigate();
 
     const [fundList, setFundList] = useState([]);
+    const [pageCount, setPageCount] = useState(1);
     const page_size = 9;
 
     const getFundItem = async () => {
@@ -42,6 +43,7 @@ const Fund = () => {
         }))
         console.log(list);
         setFundList(list);
+        setPageCount(response.data.pageCount);
 
     }
 
@@ -102,7 +104,7 @@ const Fund = () => {
             <section className="fund-footer">
                 <ul>
                     {/* <a href="#"><li>{'<'}</li></a> */}
-                    {[...Array(Math.ceil(fundList.length/page_size))].map((n, index) => {
+                    {[...Array(pageCount)].map((n, index) => {
                         return (
                             <div onClick={setPage} key={index} className={fundSearch.page === index+1 ? "is-active" : ""}><li>{index + 1}</li></div>
                         )})

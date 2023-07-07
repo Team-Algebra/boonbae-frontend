@@ -24,7 +24,7 @@ export const Input = ({ values, setValues, inputConfig }) => {
 
 
     const imgUploadHandler = async (e, index) => {
-        console.log(e.target.files[0]);
+        let file = e.target.files[0];
         // let name = Date.now() + e.target.files[0].name;
         // e.target.files[0].name = name;
 
@@ -37,13 +37,12 @@ export const Input = ({ values, setValues, inputConfig }) => {
                 },
         })
         
-        axios.put(res.data.presigned_url, e.target.files[0], {
+        axios.put(res.data.presigned_url, file, {
             headers: {
-                // "timeout": 0,
-                // "processData": false,
-                "Content-Type": "binary/octet-stream",
-            },
+                "Content-Type": "image/*",
+            }
         })
+        .then(res => console.log(res.config.url.split("?")[0]))
             .catch(err => console.log(err));        
 
         const newValues = [...values];

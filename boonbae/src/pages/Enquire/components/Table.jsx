@@ -41,6 +41,8 @@ const Table = () => {
                 : qnaArray.filter((data) => {
                     if (selectedFilter === "최신순") {
                         return true;
+                    } else if (selectedFilter === "답변완료" && data.status === "answered") {
+                        return true;
                     } else if (selectedFilter === "정보추가요청" && data.qnaType === "ADD_REQUEST") {
                         return true;
                     } else if (selectedFilter === "정보수정요청" && data.qnaType === "EDIT_REQUEST") {
@@ -114,7 +116,7 @@ const Table = () => {
                                                 : "기타"
                                     }
                                 </td>
-                                <td className="status">{data.status === "answerred" ? ("완료") : ("대기")}</td>
+                                <td className="status">{data.status == "answered" ? ("완료") : ("대기")}</td>
                                 <td className="title">{data.title}</td>
                                 <td className="userName">{data.userName}</td>
                                 <td className="createAt">{data.createAt.split("T")[0]}</td>
