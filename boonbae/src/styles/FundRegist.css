@@ -13,11 +13,14 @@
     padding: 50px 150px;
 }
 
-.fund-info > div {
+.fund-info>div {
     margin: 20px 0;
 }
 
-.fund-info-name, .fund-target-amount, .fund-supporting-amount, .fund-close-date {
+.fund-info-name,
+.fund-target-amount,
+.fund-supporting-amount,
+.fund-close-date {
     display: flex;
 }
 
@@ -39,13 +42,13 @@
     text-align: center;
 }
 
-input {
+.fund-regist input {
     width: 70%;
     font-size: 1rem;
     padding: 0 10px;
 }
 
-select {
+.fund-info-type select {
     width: 50%;
     height: 40px;
     font-size: 1rem;
@@ -54,4 +57,8 @@ select {
 
 .fund-ment {
     margin: 20px 0;
+}
+
+.datePicker {
+    height: 40px;
 }

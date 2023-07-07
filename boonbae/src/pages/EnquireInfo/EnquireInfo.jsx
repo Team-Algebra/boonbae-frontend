@@ -8,7 +8,7 @@ import "../../styles/EnquireInfo.css"
 const EnquireInfo = () => {
 
     const navigate = useNavigate();
-    const {qnaPk} = useParams();
+    const { qnaPk } = useParams();
     const [qnaInfo, setQnaInfo] = useState();
 
     useEffect(() => {
@@ -20,18 +20,18 @@ const EnquireInfo = () => {
             method: "get",
             url: `${process.env.REACT_APP_PROXY}/qna/${qnaPk}`
         })
-        .then((result)=>{
-            setQnaInfo(result.data)
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
+            .then((result) => {
+                setQnaInfo(result.data)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     return (
         <div className="qna">
             <div className="qna-header">
-                <div onClick={()=>{navigate(`/enquire`)}}>| 정보 Q&A</div>
+                <div onClick={() => { navigate(`/enquire`) }}>| 정보 Q&A</div>
             </div>
             {qnaInfo && <QnaInfo qnaInfo={qnaInfo}></QnaInfo>}
             <Reply qnaPk={qnaPk} isReply={qnaInfo?.[0]?.isReply}></Reply>

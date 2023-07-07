@@ -1,19 +1,21 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "../../styles/FundRegist.css"
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const FundRegist = () => {
     const navigate = useNavigate();
 
     const [firstCategory, setFirstCategory] = useState();
     const [secondCategoryList, setSecondCategoryList] = useState([]);
-    const [closeDate, setCloseDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
 
     const handleFirstCategory = (event) => {
         const selectedCategory = event.target.value;
         setFirstCategory(selectedCategory);
 
-        if(selectedCategory === "제품") {
+        if (selectedCategory === "제품") {
             setSecondCategoryList(["화장품", "음식", "전자제품"])
         } else if (selectedCategory === "캠페인") {
             setSecondCategoryList(["봉사활동", "후원"])
@@ -22,7 +24,7 @@ const FundRegist = () => {
         }
     }
 
-    return(
+    return (
         <div className="fund-regist">
             <div className="main-image-select"></div>
             <div className="fund-info">
@@ -62,16 +64,22 @@ const FundRegist = () => {
                 </div>
                 <div className="fund-close-date">
                     <div className="fund-info-type1">펀딩 기간</div>
-                    
+                    <DatePicker
+                        className="datePicker"
+                        dateFormat="yyyy-MM-dd"
+                        minDate={new Date()}
+                        selected={endDate}
+                        onChange={date => setEndDate(date)}
+                    />
                 </div>
             </div>
             <div className="fund-ment">저희는 친환경 제품만 취급합니다. 심사는 일주일 이내로 완료</div>
             <div className="button">
                 <button className="submit-button">게시</button>
-                <button className="cancel-button" onClick={()=>{navigate('/fund')}}>취소</button>
+                <button className="cancel-button" onClick={() => { navigate('/fund') }}>취소</button>
             </div>
         </div>
-    )   
+    )
 }
 
 export default FundRegist;
