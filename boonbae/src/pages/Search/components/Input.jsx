@@ -1,5 +1,7 @@
 import React from "react";
+
 import axios from "axios";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -9,7 +11,7 @@ const Input = ({ setItem }) => {
     const search = (e) => {
         // let keyword = e.target.value;
 
-        axios(`${process.env.REACT_APP_PROXY}/recycling/search?q=테스트`)
+        axios(`${process.env.REACT_APP_PROXY}/recycling/search?q=${e.target.value}`)
             .then(res => {
                 console.log(res.data)
                 if (res.data.count === 0) return setItem([]);
