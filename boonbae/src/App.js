@@ -35,7 +35,7 @@ const App = () => {
 						<Route path="/tree" element={<PrivateRoute component={<Tree/>}/>} />
 						<Route path="/signup" element={<Signup />} />
 						<Route path="/login" element={<Login />} />
-						<Route path="/admin" element={<Admin />} />
+						<Route path="/admin/*" element={<Admin />} />
 					</Routes>
 			</BrowserRouter>
 		</>

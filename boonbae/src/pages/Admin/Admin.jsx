@@ -1,7 +1,7 @@
 
 import { Route, Routes } from "react-router-dom"
 
-import { Main } from "./pages/Main";
+import { Add, Main, QnA } from "./pages";
 import { Sidebar } from "./components/Sidebar";
 
 import "../../styles/Admin.css"
@@ -12,6 +12,8 @@ const Admin = () => {
             <Sidebar />
             <Routes>
                 <Route path="/" element={<Main />} />
+                <Route path="/qna" element={<QnA />} /> 
+                <Route path="/add" element={<Add />} />
             </Routes>
         </>
     )
