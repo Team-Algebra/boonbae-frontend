@@ -62,3 +62,7 @@
 .datePicker {
     height: 40px;
 }
+
+.react-datepicker-wrapper {
+    width: 70%;
+}

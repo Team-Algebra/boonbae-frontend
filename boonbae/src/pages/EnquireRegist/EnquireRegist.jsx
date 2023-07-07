@@ -16,17 +16,17 @@ const EnquireRegist = () => {
     const canSubmit = useCallback(() => {
         return title !== "" && qnaType !== "" && description !== "";
     }, [title, qnaType, description]);
-    
+
     const handleSubmit = useCallback(async () => {
         try {
             await axios({
-                method:'post',
+                method: 'post',
                 url: `${process.env.REACT_APP_PROXY}/qna`
                 ,
                 data: {
-                    title : "title",
-                    qnaType : "qnaType",
-                    description : "description"
+                    title: "title",
+                    qnaType: "qnaType",
+                    description: "description"
                 }
             })
             window.alert("등록되었습니다.");
@@ -36,8 +36,8 @@ const EnquireRegist = () => {
         } catch (error) {
             window.alert("등록에 실패하였습니다.");
             console.log("에러내용 : ", error);
-        } 
-      }, [title, qnaType, description])
+        }
+    }, [title, qnaType, description])
 
     return (
         <div className="enquire-regist">
@@ -47,9 +47,9 @@ const EnquireRegist = () => {
             <div className="regist-input">
                 <div className="input-type">제목</div>
                 <div>
-                    <input 
+                    <input
                         onChange={(e) => {
-                        setTitle(e.target.value)
+                            setTitle(e.target.value)
                         }}
                         className="title"
                         placeholder="제목을 입력하세요"
@@ -58,19 +58,19 @@ const EnquireRegist = () => {
                 </div>
                 <div className="input-type">분류</div>
                 <div className="qnaType-info">
-                    <button 
+                    <button
                         onClick={() => handleButtonClick('ADD_REQUEST')}
                         className={qnaType === 'ADD_REQUEST' ? 'selected' : ''}
                     >정보추가요청</button>
-                    <button 
+                    <button
                         onClick={() => handleButtonClick('EDIT_REQUEST')}
                         className={qnaType === 'EDIT_REQUEST' ? 'selected' : ''}
                     >정보수정요청</button>
-                    <button 
+                    <button
                         onClick={() => handleButtonClick('SYSTEM_REQUEST')}
                         className={qnaType === 'SYSTEM_REQUEST' ? 'selected' : ''}
                     >시스템요청</button>
-                    <button 
+                    <button
                         onClick={() => handleButtonClick('ETC')}
                         className={qnaType === 'ETC' ? 'selected' : ''}
                     >기타</button>
@@ -89,7 +89,7 @@ const EnquireRegist = () => {
             </div>
             <div className="button">
                 <button className="submit-button" onClick={canSubmit() ? handleSubmit : null}>게시</button>
-                <button className="cancel-button" onClick={()=>{navigate('/enquire')}}>취소</button>
+                <button className="cancel-button" onClick={() => { navigate('/enquire') }}>취소</button>
             </div>
         </div>
     )

@@ -9,11 +9,16 @@ const FundRegist = () => {
 
     const [firstCategory, setFirstCategory] = useState();
     const [secondCategoryList, setSecondCategoryList] = useState([]);
+    const [secondCategory, setSecondCategory] = useState();
     const [endDate, setEndDate] = useState(new Date());
 
     const handleFirstCategory = (event) => {
         const selectedCategory = event.target.value;
-        setFirstCategory(selectedCategory);
+        if (selectedCategory === "") {
+            window.alert("1차 카테고리를 선택하세요.");
+        } else {
+            setFirstCategory(selectedCategory);
+        }
 
         if (selectedCategory === "제품") {
             setSecondCategoryList(["화장품", "음식", "전자제품"])
@@ -24,9 +29,20 @@ const FundRegist = () => {
         }
     }
 
+    const handleSecondCategory = (event) => {
+        const selectedCategory = event.target.value;
+        if (selectedCategory === "") {
+            window.alert("2차 카테고리를 선택하세요.");
+        } else {
+            setSecondCategory(selectedCategory);
+        }
+    }
+
     return (
         <div className="fund-regist">
-            <div className="main-image-select"></div>
+            <div className="main-image-select">
+                <input type="file"></input>
+            </div>
             <div className="fund-info">
                 <div className="fund-info-name">
                     <div className="fund-info-type1">펀딩 이름</div>
@@ -40,7 +56,7 @@ const FundRegist = () => {
                             <option value="제품">제품</option>
                             <option value="캠페인">캠페인</option>
                         </select>
-                        <select>
+                        <select value={secondCategory} onChange={handleSecondCategory}>
                             <option value="">2차 카테고리</option>
                             {secondCategoryList.map((option) => (
                                 <option value={option}>
