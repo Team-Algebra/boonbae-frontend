@@ -5,7 +5,6 @@ export const Sidebar = () => {
     const navigate = useNavigate();
 
     const menuList = [
-        { name: '관리자 메인', path: '/admin' },
         { name: '펀딩 관리', path: '/admin/fund' },
         { name: 'Q&A 관리', path: '/admin/qna' },
         { name: '정보 추가', path: '/admin/add' },
