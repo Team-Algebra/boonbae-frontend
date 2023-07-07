@@ -12,8 +12,7 @@ const Reply = ({ qnaPk, isReply }) => {
         try {
             const token = localStorage.getItem('token');
             const response = await axios.post(`${process.env.REACT_APP_PROXY}/qna/${qnaPk}/reply`, {
-                message: reply,
-                status: answered,
+                content: reply
             }, {
                 headers: {
                     Authorization: `Bearer ${token}`,
