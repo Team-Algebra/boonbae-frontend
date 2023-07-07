@@ -13,3 +13,5 @@ export { Login } from "./Login";
 export { Admin } from "./Admin";
 export { Certification } from "./Certification"
 export { Tonic } from "./Tonic"
+export { Mypage } from "./Mypage"; 
+

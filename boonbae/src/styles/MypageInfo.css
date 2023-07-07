@@ -1,0 +1,62 @@
+.mypage-info{
+  border : 2px solid #d9d9d9;
+  width : 60vw;
+  height : 80vh;
+  margin : auto;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding : 2vh 1vw;
+}
+.mypage-info > span{
+  font-size: 1.2rem;
+  margin-bottom: 2vh;
+}
+.mypage-info-data{
+  width : 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 2px solid #d9d9d9;
+}
+.mypage-info-data img{
+  width : 4vw;
+  margin-right : 1vw;
+}
+#mypage-tier{
+  display: flex;
+  align-items: center;
+  width : 60vw;
+  justify-content: space-around;
+  margin-bottom: 2vh;
+}
+#mypage-tier-left{
+  display: flex;
+  align-items: center;
+}
+#mypage-ecopoint{
+  display: flex;
+  align-items: center;
+  width : 60vw;
+  justify-content: space-around;
+  margin-bottom : 2vh;
+}
+#mypage-ecopoint-left{
+  display: flex;
+  align-items: center;
+}
+#mypage-point{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mypage-info-data > button{
+  border : none;
+  width : 15vw;
+  padding : 0.4rem;
+  background-color: #B5D692;
+  border-radius: 1rem;
+  color: #FFFFFF;
+  margin-bottom: 2vh;
+}
