@@ -174,6 +174,15 @@ const FundRegist = () => {
                 },
             });
             alert("등록되었습니다!");
+            setTitle("");
+            setTarget_amount("");
+            setSupporting_amount("");
+            setFirstCategory("");
+            setSecondCategoryList("");
+            setIntroduction("");
+            setOpen_date("");
+            setClose_date("");
+            setSelectedImage("");
         } catch (error) {
             console.error('서버 이미지 url 제출 실패', error);
             return null;
