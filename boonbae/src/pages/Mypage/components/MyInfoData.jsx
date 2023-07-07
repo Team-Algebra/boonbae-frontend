@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{useState} from 'react';
+import Modal from './Modal'
 import Tree_Tier from '../../../assets/TreepageImg/Tree_Tier.png';
 import Tree_EcoPoint from '../../../assets/TreepageImg/Tree_EcoPoint.png';
 
@@ -25,6 +26,12 @@ const MyInfoData = ({userInfo}) => {
     }
   };
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+  // 0: 결제 전, 1: 결제 실패, 2: 결제 성공
+  const [chargePointStat, setChargePointStat] = useState(0);
+
   return (
     <div className='mypage-info-data'>
       <div id='mypage-tier'>
@@ -41,7 +48,13 @@ const MyInfoData = ({userInfo}) => {
         </div>
         <span>{userInfo.eco_point}pt</span>
       </div>
-      <button>충전하기</button>
+      <button onClick={openModal}>충전하기</button>
+      <Modal
+        isOpen={isModalOpen}
+        closeModal={closeModal}
+        chargePointStat={chargePointStat}
+        setChargePointStat={setChargePointStat}
+      />
     </div>
   );
 };
