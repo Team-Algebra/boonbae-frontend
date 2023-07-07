@@ -19,6 +19,7 @@ const Fund = () => {
     }
 
     const fund_count = 1;
+    const page_count = 5;
 
     
     
@@ -27,7 +28,8 @@ const Fund = () => {
     const [fundSearch, setFundSearch] = useState({
         keyword: "",
         category: "",
-        sort: ""
+        sort: "",
+        page: 1
     })
 
     // 검색어 설정
@@ -36,6 +38,14 @@ const Fund = () => {
         setFundSearch({
             ...fundSearch,
             keyword: keyword
+        })
+    }
+
+    const setPage = (e) => {
+        let page = e.target.innerText*1;
+        setFundSearch({
+            ...fundSearch,
+            page: page
         })
     }
 
@@ -61,7 +71,15 @@ const Fund = () => {
                 <Item fund={fund} />
             </section>
             <section className="fund-footer">
-                <div className="fund-pagination"></div>
+                <ul>
+                    {/* <a href="#"><li>{'<'}</li></a> */}
+                    {[...Array(page_count)].map((n, index) => {
+                        return (
+                            <a onClick={setPage} className={fundSearch.page === index+1 ? "is-active" : ""}><li>{index + 1}</li></a>
+                        )})
+                    }
+                    {/* <a href="#"><li>{'>'}</li></a> */}
+                </ul>
             </section>  
         </>
         

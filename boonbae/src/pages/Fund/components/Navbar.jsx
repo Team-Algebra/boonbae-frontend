@@ -31,7 +31,7 @@ export const Navbar = ({ fundSearch, setFundSearch }) => {
 
     // 검색설정에 정렬 기준 설정
     const setSort = (e) => {
-        let sort = e.target.innerText;
+        let sort = e.target.innerText
         setFundSearch({
             ...fundSearch,
             sort: sort_base[sort]
