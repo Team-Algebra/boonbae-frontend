@@ -163,7 +163,7 @@ const FundRegist = () => {
                 title: title,
                 target_amount: target_amount,
                 supporting_amount: supporting_amount,
-                second_category_pk: secondCategory,
+                second_category_pk: secondCategoryPk,
                 introduction: introduction,
                 open_date: open_date,
                 close_date: close_date,
