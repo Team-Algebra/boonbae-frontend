@@ -14,7 +14,7 @@ const ProgressBar = ({exp, calculateLevel}) => {
       <div className='tree-progressbar-expbar'>
         <div className='tree-progressbar-exp' style={{ width: `${progress}%` }}></div>
       </div>
-      <span>{progress}% ({exp % levelExp} / {levelExp})</span>
+      <span>{progress.toFixed(2)}% ({exp % levelExp} / {levelExp})</span>
 		</div>
   );
 };
