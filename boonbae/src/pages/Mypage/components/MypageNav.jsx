@@ -1,9 +1,14 @@
 import React,{useState} from 'react';
 import '../../../styles/MypageNav.css'
 import logo from '../../../assets/분리배출.PNG'
+import Modal from '../../Tree/components/Modal';
+import ModifyInfo from './ModifyInfo';
 
 const MypageNav = ({userInfo}) => {
   const [selectedTab, setSelectedTab] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const handleTabClick = (tabName) => {
     setSelectedTab(tabName);
@@ -16,7 +21,7 @@ const MypageNav = ({userInfo}) => {
       <img src={userInfo.user_img ? userInfo.user_img : logo} alt='프로필 이미지' />
       </div>
       <span>{userInfo.username}</span>
-      <button>닉네임 수정</button>
+      <button onClick={openModal}>프로필 수정</button>
       <div className='mypage-nav-page'>
         <span
           className={selectedTab === 'info' ? 'selected' : ''}
@@ -33,9 +38,11 @@ const MypageNav = ({userInfo}) => {
       </div>
       <div className='mypage-nav-user'>
         <span>로그아웃</span>
-        <span>비밀번호 수정</span>
         <span>회원탈퇴</span>
       </div>
+      <Modal isOpen={isModalOpen} closeModal={closeModal}>
+        <ModifyInfo userInfo={userInfo} logo={logo}/>
+      </Modal>
     </div>
   );
 };

@@ -55,3 +55,41 @@
   border-top : 2px solid #D9D9D9;
   padding : 0.8em;
 }
+
+/* ModifyInfo Component */
+.mypage-nav-modifyinfo > #header{
+  padding : 1vh 1vw;
+}
+.mypage-nav-modifyinfo > #content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mypage-nav-modifyinfo-button{
+  display: flex;
+  width : 40vw;
+  justify-content: space-between;
+  margin-top: 2vh;
+}
+.mypage-nav-modifyinfo-button > button{
+  border : none;
+  border-radius: 1rem;
+  padding : 0.8em;
+  border : 1px solid #D9D9D9;
+  margin-bottom: 2vh;
+}
+.mypage-nav-modifyinfo-button > button:hover{
+  background-color: #d9d9d9be;
+}
+.mypage-nav-modifyinfo-modifyInput{
+  display: flex;
+  width : 35vw;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 2vh;
+}
+.mypage-nav-modifyinfo-modifyInput > button{ 
+  border : none;
+  border-radius: 0.5rem;
+  padding : 0.4em 0.8em;
+}
