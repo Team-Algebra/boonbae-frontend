@@ -13,12 +13,16 @@ const QnAInfo = () => {
 
     const deleteData = useCallback(async () => {
         const token = localStorage.getItem('token');
-        const response = await axios.delete(`${process.env.REACT_APP_PROXY}/qna/${qnaPk}/reply`, {
-        }, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
+        try {
+            const response = await axios.delete(`${process.env.REACT_APP_PROXY}/qna/${qnaPk}/reply`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
     }, [qnaPk]);
 
     const fetchData = useCallback(() => {
