@@ -27,8 +27,8 @@ const Fund = () => {
     // 검색어, 카테고리, 정렬 기준 설정
     const [fundSearch, setFundSearch] = useState({
         keyword: "",
-        category: "",
-        sort: "",
+        category: "all",
+        sort: "RECENT",
         page: 1
     })
 
