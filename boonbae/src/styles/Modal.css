@@ -1,0 +1,40 @@
+.modal-open{
+  display: block;
+}
+.modal-close{
+  display: none;
+}
+.modal-background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color : rgba(0, 0, 0, 0.2);
+}
+.modal-content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
+  height : 50vh;
+  max-width: 100%;
+  max-height: 90%;
+  overflow-Y: auto;
+  background-color: white;
+  display : flex;
+  flex-direction: column;
+  padding : 2vh 1vw;
+}
+.modal-content > button{
+  border : none;
+  background: none;
+  color : #D9D9D9;
+  font-size: 1.2rem;
+  align-self: flex-end;
+}
+.modal-content > button:hover{
+  border : none;
+  background: none;
+}

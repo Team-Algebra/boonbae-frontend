@@ -7,12 +7,12 @@ import Paging from "./Paging"
 const Table = () => {
 
     const navigate = useNavigate();
-    
+
     const [selectedFilter, setSelectedFilter] = useState("전체");
     const [qnaArray, setQnaArray] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 10;
-    
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -23,35 +23,35 @@ const Table = () => {
 
     const fetchData = () => {
         axios({
-          method: "get",
-          url: `${process.env.REACT_APP_PROXY}/qna/`
+            method: "get",
+            url: `${process.env.REACT_APP_PROXY}/qna/`
         })
-        .then((result) => {
-            setQnaArray(result.data.list);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+            .then((result) => {
+                setQnaArray(result.data.list);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     const filterData = useCallback(() => {
         const filteredData =
             selectedFilter === "전체"
-            ? qnaArray
-            : qnaArray.filter((data) => {
-                if ( selectedFilter === "최신순") {
-                    return true;
-                } else if ( selectedFilter === "정보추가요청" && data.qnaType === "ADD_REQUEST" ) {
-                    return true;
-                } else if ( selectedFilter === "정보수정요청" && data.qnaType === "EDIT_REQUEST" ) {
-                    return true;
-                } else if ( selectedFilter === "시스템" && data.qnaType === "SYSTEM_REQUEST" ) {
-                    return true;
-                } else if ( selectedFilter === "기타" && data.qnaType === "ETC" ) {
-                    return true;
-                } 
-                return false;
-            });
+                ? qnaArray
+                : qnaArray.filter((data) => {
+                    if (selectedFilter === "최신순") {
+                        return true;
+                    } else if (selectedFilter === "정보추가요청" && data.qnaType === "ADD_REQUEST") {
+                        return true;
+                    } else if (selectedFilter === "정보수정요청" && data.qnaType === "EDIT_REQUEST") {
+                        return true;
+                    } else if (selectedFilter === "시스템" && data.qnaType === "SYSTEM_REQUEST") {
+                        return true;
+                    } else if (selectedFilter === "기타" && data.qnaType === "ETC") {
+                        return true;
+                    }
+                    return false;
+                });
 
             if (selectedFilter === "최신순") {
                 return filteredData.sort(
@@ -64,8 +64,6 @@ const Table = () => {
     useEffect(() => {
         filterData();
     }, [selectedFilter, qnaArray, filterData])
-
-    
 
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
@@ -103,17 +101,17 @@ const Table = () => {
                             <th>작성일</th>
                         </tr>
                     </thead>
-                    <tbody>    
+                    <tbody>
                         {currentData.map((data) => (
-                            <tr key={data.qnaPk} onClick={()=>{navigate(`/enquire/${data.qnaPk}`)}}>
+                            <tr key={data.qnaPk} onClick={() => { navigate(`/enquire/${data.qnaPk}`) }}>
                                 <td className="qnaType">
                                     {data.qnaType === "ADD_REQUEST"
                                         ? "정보추가요청"
                                         : data.qnaType === "EDIT_REQUEST"
-                                        ? "정보수정요청"
-                                        : data.qnaType === "SYSTEM_REQUEST"
-                                        ? "시스템"
-                                        : "기타"
+                                            ? "정보수정요청"
+                                            : data.qnaType === "SYSTEM_REQUEST"
+                                                ? "시스템"
+                                                : "기타"
                                     }
                                 </td>
                                 <td className="status">{data.status === "answerred" ? ("완료") : ("대기")}</td>
@@ -121,18 +119,18 @@ const Table = () => {
                                 <td className="userName">{data.userName}</td>
                                 <td className="createAt">{data.createAt.split("T")[0]}</td>
                             </tr>
-                        ))}         
+                        ))}
                     </tbody>
                 </table>
             </div>
-            
+
             <Paging
                 currentPage={currentPage}
                 pageSize={pageSize}
                 qnaArray={currentData}
                 handlePageChange={handlePageChange}
             />
-            
+
         </div>
     )
 }

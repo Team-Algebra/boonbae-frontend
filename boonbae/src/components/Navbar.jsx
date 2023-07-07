@@ -2,14 +2,19 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/Navbar.css";
 import logo from "../assets/분리배출.PNG";
+import { useUserStore } from "../stores/userStore";
 
-const Navbar = () => {
+const Navbar = ({ setActive }) => {
 	const navigate = useNavigate();
   const location = useLocation();
   const [activeLink, setActiveLink] = useState("");
+  const {user,logout} = useUserStore();
 
   useEffect(() => {
     setActiveLink(location.pathname);
+    console.log(location.pathname.split("/")[1])
+    if (location.pathname.split("/")[1] === "admin") setActive(false);
+    else setActive(true);
   }, [location]);
 
   const navLinks = [
@@ -18,7 +23,7 @@ const Navbar = () => {
     { path: "/fund", text: "펀딩하기" },
     { path: "/enquire", text: "Q&A" },
   ];
-
+  
   return (
     <div className="navbar">
       <div className="navbar-left">
@@ -37,7 +42,11 @@ const Navbar = () => {
         ))}
       </div>
       <div className="navbar-right">
-        <button onClick={()=>{navigate('/login')}}>로그인</button>
+        {
+          user
+          ? <button onClick={()=>{logout()}}>로그아웃</button>
+          : <button onClick={()=>{navigate('/login')}}>로그인</button>
+        }
       </div>
     </div>
   );
