@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import axios from "axios";
 import "../../styles/FundRegist.css"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,10 +8,17 @@ import "react-datepicker/dist/react-datepicker.css";
 const FundRegist = () => {
     const navigate = useNavigate();
 
+    const [presignedUrl, setPresignedUrl] = useState('');
+    const [title, setTitle] = useState();
+    const [target_amount, setTarget_amount] = useState();
+    const [supporting_amount, setSupporting_amount] = useState();
     const [firstCategory, setFirstCategory] = useState();
     const [secondCategoryList, setSecondCategoryList] = useState([]);
     const [secondCategory, setSecondCategory] = useState();
-    const [endDate, setEndDate] = useState(new Date());
+    const [introduction, setIntroduction] = useState();
+    const [open_date, setOpen_date] = useState(new Date());
+    const [close_date, setClose_date] = useState(new Date());
+    const [mainImage, setMainImage] = useState(null);
 
     const handleFirstCategory = (event) => {
         const selectedCategory = event.target.value;
@@ -38,15 +46,81 @@ const FundRegist = () => {
         }
     }
 
+    const handleContactWrite = async () => {
+        try {
+            const presignedResponse = await axios.post(
+                `${process.env.REACT_APP_PROXY}/s3/presigned`,
+                {
+                    imageName: mainImage.name,
+                },
+                {
+                    headers: {
+                        Authorization: localStorage.getItem('accessToken'),
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+
+            const presignedUrl = presignedResponse.data.toString();
+            setPresignedUrl(presignedUrl);
+
+            const uploadResponse = await axios.put(
+                presignedUrl,
+                selectedFile,
+                {
+                    headers: {
+                        'Content-Type': selectedFile.type,
+                    },
+                }
+            );
+            console.log('S3 업로드 성공:', uploadResponse.data);
+
+            const settings = {
+                headers: {
+                    Authorization: localStorage.getItem('accessToken'),
+                    'Content-Type': 'application/json',
+                },
+            };
+
+            const noticeData = {
+                title: title,
+                supporting_amount: supporting_amount,
+                second_category_pk: 1,
+                introduction: introduction,
+                open_date: open_date,
+                close_date: close_date,
+                main_image: presignedUrl
+            };
+
+            const noticeResponse = await axios.post(
+                `${process.env.REACT_APP_PROXY}/funding/`,
+                noticeData,
+                settings
+            );
+            console.log(noticeResponse.data);
+            alert(noticeResponse.data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    const handleFileChange = (e) => {
+        setMainImage(e.target.files[0]);
+    };
+
     return (
         <div className="fund-regist">
             <div className="main-image-select">
-                <input type="file"></input>
+                <input type="file" onChange={handleFileChange}></input>
             </div>
             <div className="fund-info">
                 <div className="fund-info-name">
                     <div className="fund-info-type1">펀딩 이름</div>
-                    <input></input>
+                    <input
+                        onChange={(e) => {
+                            setTitle(e.target.value)
+                        }}
+                    />
                 </div>
                 <div className="fund-info-type">
                     <div className="fund-info-type2">펀딩 종류</div>
@@ -68,15 +142,23 @@ const FundRegist = () => {
                 </div>
                 <div className="fund-introduction">
                     <div className="fund-info-type2">펀딩 소개</div>
-                    <div></div>
+                    <textarea onChange={(e) => { e.target.value }}></textarea>
                 </div>
                 <div className="fund-target-amount">
                     <div className="fund-info-type1">목표 금액</div>
-                    <input></input>
+                    <input
+                        onChange={(e) => {
+                            setTarget_amount(e.target.value);
+                        }}
+                    />
                 </div>
                 <div className="fund-supporting-amount">
                     <div className="fund-info-type1">1회 후원 금액</div>
-                    <input></input>
+                    <input
+                        onChange={(e) => {
+                            setSupporting_amount(e.target.value);
+                        }}
+                    />
                 </div>
                 <div className="fund-close-date">
                     <div className="fund-info-type1">펀딩 기간</div>
@@ -84,14 +166,14 @@ const FundRegist = () => {
                         className="datePicker"
                         dateFormat="yyyy-MM-dd"
                         minDate={new Date()}
-                        selected={endDate}
-                        onChange={date => setEndDate(date)}
+                        selected={close_date}
+                        onChange={date => setClose_date(date)}
                     />
                 </div>
             </div>
             <div className="fund-ment">저희는 친환경 제품만 취급합니다. 심사는 일주일 이내로 완료</div>
             <div className="button">
-                <button className="submit-button">게시</button>
+                <button className="submit-button" onClick={handleContactWrite}>게시</button>
                 <button className="cancel-button" onClick={() => { navigate('/fund') }}>취소</button>
             </div>
         </div>

@@ -7,7 +7,7 @@
 
 
 .fund-info {
-    height: 600px;
+    height: 700px;
     background-color: #F5F5F5;
     margin: 20px 0;
     padding: 50px 150px;
@@ -65,4 +65,11 @@
 
 .react-datepicker-wrapper {
     width: 70%;
+}
+
+.fund-introduction textarea {
+    width: 96.8%;
+    height: 250px;
+    font-size: 1rem;
+    padding: 10px;
 }
