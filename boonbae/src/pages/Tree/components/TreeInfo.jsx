@@ -21,9 +21,9 @@ const TreeInfo = ({ myTreeInfo }) => {
       {treeInfoItems.map((item, idx) => (
         <TreeInfoDetail key={idx} img={item.img} span_name={item.span_name} span_value={item.span_value} />
       ))}
-      <div>
-        <TreeInfoButton />
-        <TreeInfoButton />
+      <div className='tree-info-button'>
+        <TreeInfoButton label={'분리배출 인증'} route = {'/certification'}/>
+        <TreeInfoButton label={'영양제 주기'} route = {'/tonic'}/>
       </div>
     </div>
   );

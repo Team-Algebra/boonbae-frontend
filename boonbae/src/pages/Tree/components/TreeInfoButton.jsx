@@ -1,10 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const TreeInfoButton = () => {
+const TreeInfoButton = ({label, route}) => {
+  const navigate = useNavigate();
+
   return (
-    <div>
-      
-    </div>
+    <button onClick={()=>navigate(`${route}`)}>
+      {label}
+    </button>
   );
 };
 
