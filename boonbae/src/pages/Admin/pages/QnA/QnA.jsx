@@ -1,4 +1,5 @@
-import { Table } from "./components/table";
+import Table from "./components/Table";
+import "../../../../styles/QnA.css"
 
 const QnA = () => {
     return (
