@@ -22,6 +22,7 @@ const Navbar = ({ setActive }) => {
     { path: "/tree", text: "나무키우기" },
     { path: "/fund", text: "펀딩하기" },
     { path: "/enquire", text: "Q&A" },
+    { path: "/admin", text: "관리자"}
   ];
   
   return (
