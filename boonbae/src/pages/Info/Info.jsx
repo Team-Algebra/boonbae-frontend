@@ -18,7 +18,10 @@ const Info = () => {
         console.log("fetching data...")
         
         axios.get(`${process.env.REACT_APP_PROXY}/recycling/${infoid}`)
-            .then(res => setItem(res.data))
+            .then(res => {
+                console.log(res.data)
+                setItem(res.data)
+            })
     }, [infoid])
 
     return (

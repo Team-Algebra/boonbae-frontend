@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react"
 
 export const Header = ({ item }) => {
-    const [itemInfo, setItemInfo] = useState({ item_name: "", item_tags: [], item_type: "", item_views: 0,});
+    const [itemInfo, setItemInfo] = useState({ item_name: "", item_tags: [], item_type: [], item_views: 0,});
     
     useEffect(() => {
+        console.log(item)
         if(item.name === undefined) return;
         setItemInfo({
             item_name: item.name, item_tags: item.tags,
             item_type: item.types, item_views: item.viewCnt,
             item_img : item.imageUrl
         })
+        
     }, [item])
 
 
