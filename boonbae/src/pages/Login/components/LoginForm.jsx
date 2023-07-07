@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios'
-import {useUserStore} from '../../../stores/userStore'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useUserStore } from "../../../stores/userStore";
 
 const LoginForm = () => {
-  
-  const {setUser} = useUserStore();
+  const { setUser } = useUserStore();
   const [formData, setFormData] = useState({
-    id : '',
-    password : '',
+    id: "",
+    password: "",
   });
 
   const navigate = useNavigate();
@@ -21,30 +20,33 @@ const LoginForm = () => {
     }));
   };
 
-  const handleLogin = async(e) =>{
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${process.env.REACT_APP_PROXY}/users/login`,{
-        id : formData.id,
-        password : formData.password
-      });
+      const response = await axios.post(
+        `${process.env.REACT_APP_PROXY}/users/login`,
+        {
+          id: formData.id,
+          password: formData.password,
+        }
+      );
       if (response.status === 200) {
         const token = response.data.token;
-        setUser(response.data.user)
-        localStorage.setItem('token', token);
-        navigate('/');
-      }else {
-        alert('로그인에 실패했습니다.');
+        setUser(response.data.user);
+        localStorage.setItem("token", token);
+        navigate("/");
+      } else {
+        alert("로그인에 실패했습니다.");
       }
     } catch (error) {
-      alert('로그인에 실패했습니다.');
+      alert("로그인에 실패했습니다.");
       console.log(error);
     }
-  }
+  };
 
   return (
     <>
-      <form className='login-form' onSubmit={handleLogin}>
+      <form className="login-form" onSubmit={handleLogin}>
         <input
           type="text"
           name="id"
@@ -62,7 +64,7 @@ const LoginForm = () => {
         />
         <button
           type="submit"
-          className='login-loginbtn'
+          className="login-loginbtn"
           disabled={!(formData.id && formData.password)}
         >
           로그인
@@ -70,8 +72,10 @@ const LoginForm = () => {
       </form>
       <button
         type="button"
-        className='login-signupbtn'
-        onClick={()=>{navigate('/signup')}}
+        className="login-signupbtn"
+        onClick={() => {
+          navigate("/signup");
+        }}
       >
         회원가입
       </button>

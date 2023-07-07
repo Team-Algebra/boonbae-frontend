@@ -8,5 +8,6 @@ export { Tree } from "./Tree";
 export { Info } from "./Info";
 export { Signup } from "./Signup";
 export { Login } from "./Login";
-export { Certification } from "./Certification"
-export { Tonic } from "./Tonic"
+export { Certification } from "./Certification";
+export { Tonic } from "./Tonic";
+export { SampleChargePoint } from "./SampleChargePoint";
