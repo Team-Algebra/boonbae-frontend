@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "../../styles/Main.css"
+import Tree from '../../assets/TreepageImg/Tree.gif'
 
 const Main = () => {
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Main = () => {
                     <div>오늘부터라도 세상을 위한 나무를 키워보는 건 어때요?</div>
                 </div>
                 <div>
-                    <img className="tree-image" src="" alt="나무이미지"></img>
+                    <img className="tree-image" src={Tree} alt="나무이미지"></img>
                 </div>
                 <button className="go-tree" onClick={() => navigate("/tree")}>나무 키우기</button>
             </div>
