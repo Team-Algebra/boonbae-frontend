@@ -1,0 +1,236 @@
+/*
+    create css for this sidebar
+
+    <section className="admin-sidebar">
+        <div className="admin-sidebar__logo">
+            <img src="/images/logo.png" alt="boonbae" />
+        </div>
+        <div className="admin-sidebar__menu">
+            <ul>
+                <li onClick={()=>navigate('/admin')}>
+                    관리자 메인
+                </li>
+                <li onClick={()=>navigate('/admin/fund')}>
+                    펀딩 관리
+                </li>
+            </ul>
+        </div>
+    </section>
+*/
+
+/* Path: boonbae/src/styles/Admin.css */
+
+.admin-sidebar {
+    width: 200px;
+    height: 100vh;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.admin-sidebar__logo {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-sidebar__logo img {
+    width: 80%;
+}
+
+.admin-sidebar__menu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-sidebar__menu ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0;
+}
+
+.admin-sidebar__menu ul li {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-sidebar__menu ul li:hover {
+    background-color: #eee;
+}
+
+.admin-sidebar__menu ul li.active {
+    background-color: #eee;
+}
+
+/* Path: boonbae/src/styles/Admin.css */
+
+
+.admin-container {
+    width: calc(100% - 200px);
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    overflow-y: scroll;
+}
+
+
+/*
+    create css for this table
+
+    <table className="admin-qna-table">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>분류</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <th>상태</th>
+                </tr>
+            </thead>
+            <tbody>
+                {qnaArray.map((qna, index) => (
+                    <tr key={index}>
+                        <td>{qna.id}</td>
+                        <td>{qna.category}</td>
+                        <td>{qna.title}</td>
+                        <td>{qna.writer}</td>
+                        <td>{qna.date}</td>
+                        <td>{qna.status}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>      
+*/
+
+/* Path: boonbae/src/styles/Admin.css */
+
+.admin-qna-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-qna-table thead tr th {
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-qna-table tbody tr td {
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+}
+
+
+
+/* Path: boonbae/src/styles/Admin.css */
+
+
+/** 
+    gpt한테 부탁한 정보 추가 탭 css
+
+**/
+
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+
+.admin-container button:focus {
+    outline: none;
+}
+
+.admin-add-input-wrapper {
+    margin-bottom: 10px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.admin-add-input-wrapper label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.admin-add-input-wrapper input {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.admin-add-input-wrapper button {
+    display: block;
+    padding: 8px 12px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.admin-add-input-wrapper button:hover {
+    background-color: #45a049;
+}
+
+.admin-add-input-wrapper button:focus {
+    outline: none;
+}
+
+
+.admin-container .admin-add-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #2196f3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    margin-top: 20px;
+}
+
+.admin-container .admin-add-btn:hover {
+    background-color: #1976d2;
+}

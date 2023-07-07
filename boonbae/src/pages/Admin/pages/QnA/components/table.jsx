@@ -1,7 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../../../styles/Enquire.css"
 import Paging from "./Paging"
 
 const Table = () => {
@@ -17,9 +16,9 @@ const Table = () => {
         fetchData();
     }, []);
 
-    
-
-    
+    useEffect(() => {
+        filterData();
+    }, [selectedFilter, qnaArray])
 
     const fetchData = () => {
         axios({
@@ -34,12 +33,14 @@ const Table = () => {
             });
     };
 
-    const filterData = useCallback(() => {
+    const filterData = () => {
         const filteredData =
             selectedFilter === "전체"
                 ? qnaArray
                 : qnaArray.filter((data) => {
                     if (selectedFilter === "최신순") {
+                        return true;
+                    } else if (selectedFilter === "답변완료" && data.status === "answered") {
                         return true;
                     } else if (selectedFilter === "정보추가요청" && data.qnaType === "ADD_REQUEST") {
                         return true;
@@ -53,17 +54,13 @@ const Table = () => {
                     return false;
                 });
 
-            if (selectedFilter === "최신순") {
-                return filteredData.sort(
-                    (a, b) => new Date(b.createAt) - new Date(a.createAt)
-                );
-            }
-        return filteredData;    
-    }, [selectedFilter, qnaArray]);
-
-    useEffect(() => {
-        filterData();
-    }, [selectedFilter, qnaArray, filterData])
+        if (selectedFilter === "최신순") {
+            return filteredData.sort(
+                (a, b) => new Date(b.createAt) - new Date(a.createAt)
+            );
+        }
+        return filteredData;
+    }
 
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
@@ -78,7 +75,7 @@ const Table = () => {
     };
 
     return (
-        <div>
+        <div className="qna">
             <div className="qna-filter">
                 <select value={selectedFilter} onChange={handleFilterChange}>
                     <option value="전체">전체</option>
@@ -103,7 +100,7 @@ const Table = () => {
                     </thead>
                     <tbody>
                         {currentData.map((data) => (
-                            <tr key={data.qnaPk} onClick={() => { navigate(`/enquire/${data.qnaPk}`) }}>
+                            <tr key={data.qnaPk} onClick={() => { navigate(`/admin/qna/info/${data.qnaPk}`) }}>
                                 <td className="qnaType">
                                     {data.qnaType === "ADD_REQUEST"
                                         ? "정보추가요청"
@@ -114,7 +111,7 @@ const Table = () => {
                                                 : "기타"
                                     }
                                 </td>
-                                <td className="status">{data.status === "answerred" ? ("완료") : ("대기")}</td>
+                                <td className="status">{data.status == "answerred" ? ("완료") : ("대기")}</td>
                                 <td className="title">{data.title}</td>
                                 <td className="userName">{data.userName}</td>
                                 <td className="createAt">{data.createAt.split("T")[0]}</td>

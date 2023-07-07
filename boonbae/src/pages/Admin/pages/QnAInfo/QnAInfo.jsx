@@ -1,10 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom"
 import axios from "axios"
-import QnaInfo from "./components/QnaInfo"
-import "../../styles/EnquireInfo.css"
+import QnAMoreInfo from "./components/QnAMoreInfo"
+import Reply from "./components/Reply"
+import "../../../../styles/QnAInfo.css"
 
-const EnquireInfo = () => {
+const QnAInfo = () => {
 
     const navigate = useNavigate();
     const { qnaPk } = useParams();
@@ -21,22 +22,21 @@ const EnquireInfo = () => {
             .catch((error) => {
                 console.log(error);
             })
-
     }, [qnaPk]);
 
     useEffect(() => {
         fetchData();
     }, [fetchData]);
 
-
     return (
         <div className="qna">
             <div className="qna-header">
-                <div onClick={() => { navigate(`/enquire`) }}>| 정보 Q&A</div>
+                <div onClick={() => { navigate(`/admin/qna`) }}>| 정보 Q&A</div>
             </div>
-            {qnaInfo && <QnaInfo qnaInfo={qnaInfo}></QnaInfo>}
+            {qnaInfo && <QnAMoreInfo qnaInfo={qnaInfo}></QnAMoreInfo>}
+            <Reply qnaPk={qnaPk} isReply={qnaInfo?.[0]?.isReply}></Reply>
         </div>
     )
 }
 
-export default EnquireInfo;
+export default QnAInfo;

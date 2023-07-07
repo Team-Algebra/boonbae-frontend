@@ -4,7 +4,7 @@ import "../styles/Navbar.css";
 import logo from "../assets/분리배출.PNG";
 import { useUserStore } from "../stores/userStore";
 
-const Navbar = () => {
+const Navbar = ({ setActive }) => {
 	const navigate = useNavigate();
   const location = useLocation();
   const [activeLink, setActiveLink] = useState("");
@@ -12,6 +12,9 @@ const Navbar = () => {
 
   useEffect(() => {
     setActiveLink(location.pathname);
+    console.log(location.pathname.split("/")[1])
+    if (location.pathname.split("/")[1] === "admin") setActive(false);
+    else setActive(true);
   }, [location]);
 
   const navLinks = [

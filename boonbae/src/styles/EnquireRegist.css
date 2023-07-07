@@ -16,7 +16,6 @@
     margin: 0 auto;
 }
 
-
 /* input */
 .regist-input {
     width: 100%;
@@ -42,9 +41,10 @@
 }
 
 .regist-input input {
-    width: 80%;
+    width: 77.5%;
     height: 40px;
     font-size: 1rem;
+    padding: 0 10px;
 }
 
 .regist-input .qnaType-info button {
@@ -60,9 +60,10 @@
 }
 
 .regist-input textarea {
-    width: 80%;
+    width: 77.5%;
     height: 200px;
     font-size: 1rem;
+    padding: 10px;
 }
 
 /* 버튼 */
