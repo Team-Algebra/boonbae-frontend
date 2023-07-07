@@ -2,22 +2,9 @@ import React from 'react';
 import profile from '../../../assets/분리배출.PNG'
 import {useUserStore} from '../../../stores/userStore'
 
-const TreeInfoHeader = ({exp}) => {
-  const { user } = useUserStore(); 
-
-  const calculateLevel = (exp) => {
-    let level = 1;
-    let levelExp = 10;
-    let totalExp = 0;
+const TreeInfoHeader = ({exp,calculateLevel}) => {
+  const { user } = useUserStore();
   
-    while (exp >= totalExp + levelExp) {
-      totalExp += levelExp;
-      level++;
-      levelExp = level * 10;
-    }
-    return level;
-  };
-
   return (
     <div className='tree-infoheader'>
       <div className='tree-userprofile'>

@@ -7,7 +7,7 @@ import Tree_Tier from '../../../assets/TreepageImg/Tree_Tier.png';
 import Tree_EcoPoint from '../../../assets/TreepageImg/Tree_EcoPoint.png';
 import Tree_Recycle from '../../../assets/TreepageImg/Tree_Recycle.png';
 
-const TreeInfo = ({ myTreeInfo }) => {
+const TreeInfo = ({ myTreeInfo, calculateLevel }) => {
   const treeInfoItems = [
     { img: Tree_Exp, span_name: '나무 경험치', span_value: myTreeInfo.current_exp },
     { img: Tree_Tier, span_name: '사용자 티어', span_value: (myTreeInfo.rank / myTreeInfo.all_cnt) * 100 },
@@ -17,7 +17,7 @@ const TreeInfo = ({ myTreeInfo }) => {
 
   return (
     <div className='tree-info'>
-      <TreeInfoHeader exp={myTreeInfo.current_exp} />
+      <TreeInfoHeader exp={myTreeInfo.current_exp} calculateLevel={calculateLevel}/>
       {treeInfoItems.map((item, idx) => (
         <TreeInfoDetail key={idx} img={item.img} span_name={item.span_name} span_value={item.span_value} />
       ))}

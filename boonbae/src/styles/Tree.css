@@ -12,11 +12,6 @@
   margin: 0 1vw;
   padding : 2vh 2vw;
 }
-.tree-progressbar{
-  border : 2px solid black;
-  height: 10vh;
-  margin : 0 1vw;
-}
 /* TreeInfo component */
 .tree-info {
   border: 2px solid #D9D9D9;
@@ -107,4 +102,32 @@
 }
 .tree-info-button > button:hover{
   background-color: #D5E6F5;
+}
+/* TreeProgressBar Component */
+.tree-progressbar{
+  height: 10vh;
+  margin : 0 1vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1vh;
+}
+.tree-progressbar-status{
+  margin: 0vh 1vw;
+  border : none;
+  background-color: #B5D692;
+  color: #FFFFFF;
+  padding: 0.5em;
+  border-radius: 1rem;
+}
+.tree-progressbar-expbar{
+  width : 20vw;
+  border-radius: 1rem;
+  background-color: #D9D9D9;
+  margin-right: 1vw;
+}
+.tree-progressbar-exp{
+  background-color: #B5D692;
+  height: 2vh;
+  border-radius: 1rem;
 }

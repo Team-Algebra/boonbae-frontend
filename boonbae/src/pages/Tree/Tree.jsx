@@ -41,15 +41,28 @@ const Tree = () => {
 		getTreeInfo();
 	},[])
 
+	const calculateLevel = (exp) => {
+    let level = 1;
+    let levelExp = 10;
+    let totalExp = 0;
+  
+    while (exp >= totalExp + levelExp) {
+      totalExp += levelExp;
+      level++;
+      levelExp = level * 10;
+    }
+    return level;
+  };
+
 	return (
 		<div className='tree'>
 			<div>
 				<div className='tree-imgwrapper'>
 					<img alt='나의 나무'/>
 				</div>
-				<ProgressBar/>
+				<ProgressBar exp = {myTreeInfo.current_exp} calculateLevel={calculateLevel}/>
 			</div>
-			<TreeInfo myTreeInfo={myTreeInfo}/>
+			<TreeInfo myTreeInfo={myTreeInfo} calculateLevel={calculateLevel}/>
 		</div>
 	)
 }
