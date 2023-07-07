@@ -43,7 +43,7 @@ const Mypage = () => {
   return (
     <div className='mypage'>
       <MypageNav userInfo = {userInfo}/>
-      <MypageInfo/>
+      <MypageInfo userInfo = {userInfo}/>
     </div>
   );
 };

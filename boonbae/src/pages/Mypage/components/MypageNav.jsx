@@ -37,7 +37,6 @@ const MypageNav = ({userInfo}) => {
         </span>
       </div>
       <div className='mypage-nav-user'>
-        <span>로그아웃</span>
         <span>회원탈퇴</span>
       </div>
       <Modal isOpen={isModalOpen} closeModal={closeModal}>
