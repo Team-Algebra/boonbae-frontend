@@ -1,0 +1,86 @@
+.tree-certification{
+  border : 2px solid #d9d9d9;
+  border-radius: 1rem;
+  width : 60vw;
+  height : 60vh;
+  margin : 10vh auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3vh 0;
+  text-align: center;
+}
+.tree-certification-title{
+  background-color: #B5D692;
+  width : 10vw;
+  height: 5vh;
+  text-align: center;
+  line-height: 5vh;
+  color: #FFFFFF;
+  margin-bottom: 3vh;
+}
+.tree-certification > p{
+  margin-top: 3vh;
+}
+/* ImageUploadForm Component*/
+.imgupload-form-imgzone{
+  width : 18vw;
+  height: 18vw;
+  background-color: rgba(217,217,217,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  color : #d9d9d9;
+  margin-top: 2vh;
+}
+.imgupload-form-imgzone > img{
+  width : 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.imgupload-form-input{
+  display: none;
+}
+.imgupload-form-button{
+  display: flex;
+  width : 18vw;
+}
+.imgupload-form-button > button{
+  width : 9vw;
+  padding: 0.5em;
+  border: 1px solid #d9d9d9;
+}
+.imgupload-form-button > button:hover{
+  background-color: rgba(217,217,217,0.7);
+}
+.imgupload-form-button > #left{
+  color : #FE0000;
+}
+.imgupload-form-button > #right{
+  color : #198df3;
+}
+.imageupload-form-certification{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.imageupload-form-certification > p{
+  font-size: 2rem;
+  margin-bottom : 15vh;
+}
+.imageupload-form-certification > div{
+  display : flex;
+  width : 25vw;
+  color : white;
+  justify-content: space-between;
+}
+.imageupload-form-certification > div > button{
+  width : 10vw;
+  height : 5vh;
+  border-radius: 1rem;
+  background-color: rgba(60,179,113,0.7);
+  border : none;
+  color : #FFFFFF;
+  font-size: 1.2rem;
+}
