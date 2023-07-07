@@ -10,3 +10,4 @@ export { Signup } from "./Signup";
 export { Login } from "./Login";
 export { Certification } from "./Certification"
 export { Tonic } from "./Tonic"
+export { Mypage } from "./Mypage"; 
