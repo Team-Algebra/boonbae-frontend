@@ -47,6 +47,10 @@ const FundRegist = () => {
                 { name: "후원", pk: 8 },
                 { name: "기타", pk: 9 }
             ]);
+        } else if (selectedCategory === "기타") {
+            setSecondCategoryList([
+                { name: "기타", pk: 10 },
+            ]);
         } else {
             setSecondCategoryList([]);
         }
@@ -256,6 +260,7 @@ const FundRegist = () => {
                             <option value="">1차 카테고리</option>
                             <option value="제품">제품</option>
                             <option value="캠페인">캠페인</option>
+                            <option value="기타">기타</option>
                         </select>
                         <select value={secondCategory} onChange={handleSecondCategory}>
                             <option value="">2차 카테고리</option>
