@@ -22,11 +22,11 @@ export const Header = ({ item }) => {
                 </div>
                 <div className="info-header-item-title">
                     <div>{ itemInfo.item_name }</div>
-                    <div>{ itemInfo.item_tags.join(" ") }</div>
+                    <div>{ itemInfo.item_tags.join(" #") }</div>
                 </div>
             </div>
             <div className="info-header-detail">
-                <div className="info-header-type">{itemInfo.item_type}</div>
+                <div className="info-header-type">{itemInfo.item_type.join(" ")}</div>
                 <div className="info-header-view">조회수 : { itemInfo.item_views}</div>
             </div>
 
