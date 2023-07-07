@@ -160,3 +160,77 @@
 
 
 /* Path: boonbae/src/styles/Admin.css */
+
+
+/** 
+    gpt한테 부탁한 정보 추가 탭 css
+
+**/ 
+
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+
+  
+  .admin-container button:focus {
+    outline: none;
+  }
+  
+  .admin-add-input-wrapper {
+    margin-bottom: 10px;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .admin-add-input-wrapper label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .admin-add-input-wrapper input {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .admin-add-input-wrapper button {
+    display: block;
+    padding: 8px 12px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .admin-add-input-wrapper button:hover {
+    background-color: #45a049;
+  }
+  
+  .admin-add-input-wrapper button:focus {
+    outline: none;
+  }
+
+
+  .admin-container .admin-add-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #2196f3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    margin-top: 20px;
+  }
+  
+  .admin-container .admin-add-btn:hover {
+    background-color: #1976d2;
+  }
