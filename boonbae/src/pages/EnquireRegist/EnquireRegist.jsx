@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"
 import "../../styles/EnquireRegist.css"
 
 const EnquireRegist = () => {
@@ -24,9 +25,9 @@ const EnquireRegist = () => {
                 url: `${process.env.REACT_APP_PROXY}/qna`
                 ,
                 data: {
-                    title: "title",
-                    qnaType: "qnaType",
-                    description: "description"
+                    title: title,
+                    qnaType: qnaType,
+                    description: description
                 }
             })
             window.alert("등록되었습니다.");
