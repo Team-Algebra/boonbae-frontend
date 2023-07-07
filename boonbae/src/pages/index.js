@@ -7,3 +7,8 @@ export { FundRegist } from "./FundRegist";
 export { Search } from "./Search";
 export { Tree } from "./Tree";
 export { Info } from "./Info";
+export { Signup } from "./Signup";
+export { Login } from "./Login";
+export { Admin } from "./Admin";
+export { Certification } from "./Certification"
+export { Tonic } from "./Tonic"
