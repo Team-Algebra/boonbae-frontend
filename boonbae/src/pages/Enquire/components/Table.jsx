@@ -110,7 +110,7 @@ const Table = () => {
                                                 : "기타"
                                     }
                                 </td>
-                                <td className="status">{data.status == "answerred" ? ("완료") : ("대기")}</td>
+                                <td className="status">{data.status == "answered" ? ("완료") : ("대기")}</td>
                                 <td className="title">{data.title}</td>
                                 <td className="userName">{data.userName}</td>
                                 <td className="createAt">{data.createAt.split("T")[0]}</td>
