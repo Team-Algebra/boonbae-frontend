@@ -57,25 +57,100 @@ const ImageUploadForm = () => {
   };
 
   /**
-   * 등록 버튼 클릭 이벤트 핸들러
-   */
-  const handleSubmit = async () => {
-    if (!selectedImage) {
-      return;
-    }
-    const token = localStorage.getItem('token');
-    const formData = new FormData();
-    formData.append('image', selectedImage);
-
+   * 선택한 이미지의 사전 서명된 URL을 가져옵니다.
+   * @returns {Promise<string|null>} 사전 서명된 URL이 반환되며, 오류가 발생할 경우 null을 반환합니다.
+  */
+  const getPresignedUrl = async () => {
     try {
-      const response = await axios.post(`${process.env.REACT_APP_PROXY}/`,{
+      const token = localStorage.getItem('token');
+      const name = selectedImage.name;
+      const response = await axios.post(`${process.env.REACT_APP_PROXY}/s3/presigned`, {
+        image_name: name,
+      }, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log('Image upload response:', response);
+      if (response.status === 200) {
+        return response.data.presigned_url;
+      } else {
+        console.log('url 가져오기 실패');
+        return null;
+      }
     } catch (error) {
-      console.error('Image upload error:', error);
+      console.error('Presinged_Url 가져오기 실패 :', error);
+      return null;
+    }
+  }
+
+  /**
+   * S3 서버에 이미지를 업로드합니다.
+   * @param {string} presignedUrl - 사전 서명된 URL
+   * @returns {Promise<string>} - 업로드된 이미지의 URL
+   * @throws {Error} - 업로드 실패 시 에러가 throw됩니다.
+  */
+  const postImage = async (presignedUrl) => {
+    try {
+      const response = await axios.put(presignedUrl, selectedImage,{
+        headers :{
+          "Content-Type": "image/png",
+        }
+      });
+      return response.config.url.split('?')[0];
+    } catch (error) {
+      console.error('S3 이미지 업로드 실패:', error);
+      throw error;
+    }
+  };  
+
+  /**
+   * 서버에 이미지 URL을 제출합니다.
+   * @param {string} img_url - 업로드된 이미지의 URL
+   * @returns {Promise<void>}
+  */
+  const postImgUrl = async (img_url) =>{
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post(`${process.env.REACT_APP_PROXY}/trees/`, {
+        image_url: img_url,
+      },{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if(response.status === 201){
+        alert('분리 배출 인증 완료');
+      }else if(response.status === 429){
+        alert('이미 분리 배출 인증 3회 진행되었습니다.')
+      }
+      else{
+        console.log('서버 이미지 url 제출 실패');
+      }
+    } catch (error) {
+      console.error('서버 이미지 url 제출 실패', error);
+      return null;
+    }
+  }
+
+  /**
+   * 등록 버튼 클릭 이벤트 핸들러입니다.
+   * @returns {Promise<void>}
+  */
+  const handleSubmit = async () => {
+    if (!selectedImage) {
+      alert('이미지를 선택해주세요!');
+      return;
+    }
+    try {
+      const url = await getPresignedUrl();
+      if (url) {
+        const img_url = await postImage(url);
+        if (img_url) {
+          postImgUrl(img_url);
+        }
+      }
+    } catch (error) {
+      console.error('이미지 업로드 실패:', error);
     }
   };
 
