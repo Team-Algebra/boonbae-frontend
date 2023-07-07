@@ -2,8 +2,9 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin: 50px 300px;
-    min-width: 900px;
+    margin: 30px auto;
+    max-width: 900px;
+    width: 80%;
 }
 
 .fund-regist-header {

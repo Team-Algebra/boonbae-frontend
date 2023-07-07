@@ -23,6 +23,24 @@
     margin-bottom: 45px;
 }
 
+.info-header-img-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 150px;
+    height: 150px;
+
+    margin-bottom: 40px;
+    margin-right: 15px;
+}
+
+.info-header-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .info-header-item{
     display: flex;
     flex-direction: row;

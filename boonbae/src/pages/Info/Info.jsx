@@ -4,6 +4,8 @@ import { Header } from "./components/Header";
 import { Body } from "./components/Body";
 import { Comments } from "./components/Comments";
 
+import axios from "axios";
+
 import "../../styles/Info.css";
 import { useEffect, useState } from "react";
 
@@ -14,9 +16,9 @@ const Info = () => {
     const [item, setItem] = useState({})
     useEffect(() => {
         console.log("fetching data...")
-        fetch(`${process.env.REACT_APP_PROXY}/recycling/${infoid}`)
-            .then(res => res.json())
-            .then(data => {setItem(data);});
+        
+        axios.get(`${process.env.REACT_APP_PROXY}/recycling/${infoid}`)
+            .then(res => setItem(res.data))
     }, [infoid])
 
     return (

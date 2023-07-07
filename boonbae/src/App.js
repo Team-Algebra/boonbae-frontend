@@ -33,7 +33,7 @@ const App = () => {
 					<Route path="/fund" element={<Fund />} />
 					<Route path="/fund/regist" element={<FundRegist />} />
 					<Route path="/fund/:fundPk" element={<FundDetail />} />
-					<Route path="/info" element={<Info />} />
+					<Route path="/info/:infoid" element={<Info />} />
 					<Route path="/search" element={<Search />} />
 					<Route path="/tree" element={<PrivateRoute component={<Tree/>}/>} />
 					<Route path="/certification" element={<PrivateRoute component={<Certification/>}/>} />

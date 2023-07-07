@@ -9,7 +9,7 @@ const API_URL = process.env.REACT_APP_PROXY;
 
 export const Comments = ({ item_id }) => {
 
-    const [comments, setComments] = useState();
+    const [comments, setComments] = useState([]);
     const commentInput = useRef();
 
     /**
@@ -52,7 +52,10 @@ export const Comments = ({ item_id }) => {
         console.log(commentContent);
         fetch(`${API_URL}/recycling/${item_id}/comments`, {
             method: "POST",
-            headers: { "Content-Type": "application/json", },
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
             body: JSON.stringify({ content: commentContent })
         })
             .then(res => res.json())
@@ -67,7 +70,7 @@ export const Comments = ({ item_id }) => {
 
     return(
         <section className="info-comments">
-            <div className="info-comments-header">댓글(15개)</div>
+            <div className="info-comments-header">댓글({comments.length}개)</div>
             <div className="info-comments-body">
                 {comments}
             </div>
