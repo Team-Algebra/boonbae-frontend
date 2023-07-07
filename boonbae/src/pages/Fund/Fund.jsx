@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import { Item } from "./components/Item";
 import { Navbar } from "./components/Navbar";
@@ -7,6 +8,8 @@ import { Navbar } from "./components/Navbar";
 import "../../styles/Fund.css"
 
 const Fund = () => {
+
+    const navigate = useNavigate();
 
     const [fundList, setFundList] = useState([]);
     const page_size = 9;
@@ -83,7 +86,7 @@ const Fund = () => {
         <>
             <section className="fund-header">
                 <div className="fund-header-sec-1">
-                    <div className="fund-header-upload">프로젝트 올리기</div>
+                    <div className="fund-header-upload" onClick={()=>navigate(`/fund/regist`)}>프로젝트 올리기</div>
                     <input className="fund-header-input" placeholder="검색어를 입력해주세요!" onKeyUp={setKeyword}/>
                 </div>
                 <Navbar fundSearch={ fundSearch } setFundSearch={ setFundSearch } />
