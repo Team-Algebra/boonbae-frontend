@@ -11,19 +11,6 @@ const QnAInfo = () => {
     const { qnaPk } = useParams();
     const [qnaInfo, setQnaInfo] = useState();
 
-    const deleteDate = useCallback(() => {
-        axios({
-            method: "delete",
-            url: `${process.env.REACT_APP_PROXY}/qna/${qnaPk}/reply`
-        })
-            .then((result) => {
-                console.log(result)
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    }, [qnaPk]);
-
     const fetchData = useCallback(() => {
         axios({
             method: "get",
@@ -45,7 +32,6 @@ const QnAInfo = () => {
         <div className="qna">
             <div className="qna-header">
                 <div onClick={() => { navigate(`/admin/qna`) }}>| 정보 Q&A</div>
-                <button className="delete-button" onClick={deleteDate}>댓글 삭제</button>
             </div>
             {qnaInfo && <QnAMoreInfo qnaInfo={qnaInfo}></QnAMoreInfo>}
             <Reply qnaPk={qnaPk} isReply={qnaInfo?.[0]?.isReply}></Reply>
