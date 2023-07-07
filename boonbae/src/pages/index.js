@@ -8,3 +8,4 @@ export { Tree } from "./Tree";
 export { Info } from "./Info";
 export { Signup } from "./Signup";
 export { Login } from "./Login";
+export { Admin } from "./Admin";
