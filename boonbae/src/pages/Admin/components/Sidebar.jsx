@@ -15,7 +15,7 @@ export const Sidebar = () => {
     return (
         <section className="admin-sidebar">
             <div className="admin-sidebar__logo">
-                <img src="/images/logo.png" alt="boonbae" />
+                <div>ㅂ ㅂ ㅂ ㅊ</div>
             </div>
             <div className="admin-sidebar__menu">
                 <ul>
