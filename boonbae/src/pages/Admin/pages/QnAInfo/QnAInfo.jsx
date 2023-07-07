@@ -11,19 +11,14 @@ const QnAInfo = () => {
     const { qnaPk } = useParams();
     const [qnaInfo, setQnaInfo] = useState();
 
-    const deleteData = useCallback(() => {
-        axios({
-            method: "delete",
-            url: `${process.env.REACT_APP_PROXY}/qna/${qnaPk}/reply`
-        })
-            .then((result) => {
-                console.log(result)
-                alert("댓글이 삭제되었습니다.")
-            })
-            .catch((error) => {
-                console.log(error);
-                alert("댓글 삭제에 실패하였습니다.")
-            })
+    const deleteData = useCallback(async () => {
+        const token = localStorage.getItem('token');
+        const response = await axios.delete(`${process.env.REACT_APP_PROXY}/qna/${qnaPk}/reply`, {
+        }, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
     }, [qnaPk]);
 
     const fetchData = useCallback(() => {
