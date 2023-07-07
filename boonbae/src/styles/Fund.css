@@ -159,7 +159,7 @@
     list-style-type: none;
 }
   
-.fund-footer a{
+.fund-footer div{
     display: inline-block;
     padding: 10px 18px;
     color: #222;
@@ -167,7 +167,7 @@
 
 /* ONE */
 
-.fund-footer a{
+.fund-footer div{
     width: 40px;
     height: 40px;
     line-height: 40px;
@@ -177,7 +177,7 @@
     cursor: pointer;
 }
 
-.fund-footer a.is-active{
+.fund-footer div.is-active{
     background-color: #2ecc71;
     border-radius: 100%;
     color: #fff;

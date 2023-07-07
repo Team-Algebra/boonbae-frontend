@@ -19,7 +19,7 @@ const Fund = () => {
     }
 
     const fund_count = 1;
-    const page_count = 5;
+    const page_count = 12;
 
     
     
@@ -75,7 +75,7 @@ const Fund = () => {
                     {/* <a href="#"><li>{'<'}</li></a> */}
                     {[...Array(page_count)].map((n, index) => {
                         return (
-                            <a onClick={setPage} className={fundSearch.page === index+1 ? "is-active" : ""}><li>{index + 1}</li></a>
+                            <div onClick={setPage} key={index} className={fundSearch.page === index+1 ? "is-active" : ""}><li>{index + 1}</li></div>
                         )})
                     }
                     {/* <a href="#"><li>{'>'}</li></a> */}
