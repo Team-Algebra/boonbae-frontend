@@ -40,7 +40,12 @@ const Add = () => {
                 data.tags.push(input.value);
             }
         })
-        axios.post(`${process.env.REACT_APP_PROXY}/recycling`, JSON.stringify(data))
+        axios.post(`${process.env.REACT_APP_PROXY}/recycling`, data, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            }
+        })
             .then((res) => {
                 alert("분리배출 정보 추가에 성공했습니다.")
                 console.log(res);
