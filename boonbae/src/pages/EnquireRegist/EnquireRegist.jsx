@@ -21,16 +21,16 @@ const EnquireRegist = () => {
 
     const handleSubmit = useCallback(async () => {
         try {
-            await axios({
-                method: 'post',
-                url: `${process.env.REACT_APP_PROXY}/qna`
-                ,
-                data: {
-                    title: title,
-                    qnaType: qnaType,
-                    description: description
-                }
-            })
+            const token = localStorage.getItem('token');
+            const response = await axios.post(`${process.env.REACT_APP_PROXY}/qna`, {
+                title: title,
+                qnaType: qnaType,
+                description: description
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
             window.alert("등록되었습니다.");
             setTitle("");
             setQnaType("");
