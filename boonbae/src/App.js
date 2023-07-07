@@ -1,16 +1,18 @@
 import './styles/App.css';
 
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
-import { Main, Enquire, EnquireInfo, EnquireRegist, Fund, FundRegist, Info, Search, Tree, Signup, Login, Certification, Tonic, FundDetail } from './pages';
+import { Main, Enquire, EnquireInfo, EnquireRegist, Fund, FundRegist, Info, Search, Tree, Signup, Login, Admin, Certification, Tonic, FundDetail } from './pages';
+
 import Navbar from './components/Navbar';
 import { useUserStore } from './stores/userStore';
 import PrivateRoute from './components/PrivateRoute';
 
 const App = () => {
 
-	const {checkValid} = useUserStore();
+	const { checkValid } = useUserStore();
+	const [isAdmin, setIsAdmin] = useState(true);
 	
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -22,7 +24,8 @@ const App = () => {
 	return (
 		<>
 			<BrowserRouter>
-				<Navbar />
+
+        { isAdmin?<Navbar setActive={setIsAdmin} />:null }
 				<Routes>
 					<Route path="/" element={<Main />} />
 					<Route path="/enquire" element={<Enquire />} />
@@ -38,6 +41,7 @@ const App = () => {
 					<Route path="/tonic" element={<PrivateRoute component={<Tonic/>}/>} />
 					<Route path="/signup" element={<Signup />} />
 					<Route path="/login" element={<Login />} />
+          <Route path="/admin/*" element={<Admin />} />
 				</Routes>
 			</BrowserRouter>
 		</>

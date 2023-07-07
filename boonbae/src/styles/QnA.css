@@ -1,0 +1,13 @@
+.admin-container .qna {
+    width: 850px;
+    margin-left: 100px;
+}
+
+.admin-container .qna-table {
+    width: 100%;
+}
+
+.qna-info .description-info,
+.qna-info .replyText-info {
+    width: 100%
+}
