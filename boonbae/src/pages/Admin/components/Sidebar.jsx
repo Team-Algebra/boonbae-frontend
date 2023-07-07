@@ -10,6 +10,7 @@ export const Sidebar = () => {
         { name: '정보 추가', path: '/admin/add' },
         { name: '분리배출 인증', path: '/admin/certification' },
         { name: '댓글 관리', path: '/admin/comment' },
+        { name: '마이페이지', path: '/mypage' },
     ]
 
     return (
