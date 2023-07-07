@@ -4,6 +4,7 @@ export { EnquireInfo } from "./EnquireInfo";
 export { EnquireRegist } from "./EnquireRegist";
 export { Fund } from "./Fund";
 export { FundRegist } from "./FundRegist";
+export { FundDetail } from "./FundDetail";
 export { Search } from "./Search";
 export { Tree } from "./Tree";
 export { Info } from "./Info";
