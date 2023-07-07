@@ -127,7 +127,7 @@
   margin-right: 1vw;
 }
 .tree-progressbar-exp{
-  background-color: #B5D692;
+  background: linear-gradient(135deg, #B5D692, #84C57F);
   height: 2vh;
   border-radius: 1rem;
 }

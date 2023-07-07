@@ -27,7 +27,6 @@ const Tree = () => {
         },
       });
       if (response.status === 200) {
-        console.log(response.data);
 				setMyTreeInfo(response.data);
       } else {
         console.log('나의 나무 정보 확인 실패.');
