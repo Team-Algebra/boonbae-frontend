@@ -40,6 +40,8 @@ const Table = () => {
                 : qnaArray.filter((data) => {
                     if (selectedFilter === "최신순") {
                         return true;
+                    } else if (selectedFilter === "답변완료" && data.status === "answered") {
+                        return true;
                     } else if (selectedFilter === "정보추가요청" && data.qnaType === "ADD_REQUEST") {
                         return true;
                     } else if (selectedFilter === "정보수정요청" && data.qnaType === "EDIT_REQUEST") {
