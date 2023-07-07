@@ -10,7 +10,7 @@ export const Item = ({ item }) => {
 
 
     return (
-        <div className="item-wrapper" onClick={()=>navigate("/info")}> 
+        <div className="item-wrapper" onClick={()=>navigate(`/info/${item.pk}`)}> 
             <div className="item-image-wrapper">
                 <img className="item-image" src={item.image} alt="item" />
             </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../../styles/Enquire.css"
@@ -17,9 +17,9 @@ const Table = () => {
         fetchData();
     }, []);
 
-    useEffect(() => {
-        filterData();
-    }, [selectedFilter, qnaArray])
+    
+
+    
 
     const fetchData = () => {
         axios({
@@ -34,7 +34,7 @@ const Table = () => {
             });
     };
 
-    const filterData = () => {
+    const filterData = useCallback(() => {
         const filteredData =
             selectedFilter === "전체"
                 ? qnaArray
@@ -55,13 +55,17 @@ const Table = () => {
                     return false;
                 });
 
-        if (selectedFilter === "최신순") {
-            return filteredData.sort(
-                (a, b) => new Date(b.createAt) - new Date(a.createAt)
-            );
-        }
-        return filteredData;
-    }
+            if (selectedFilter === "최신순") {
+                return filteredData.sort(
+                    (a, b) => new Date(b.createAt) - new Date(a.createAt)
+                );
+            }
+        return filteredData;    
+    }, [selectedFilter, qnaArray]);
+
+    useEffect(() => {
+        filterData();
+    }, [selectedFilter, qnaArray, filterData])
 
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
