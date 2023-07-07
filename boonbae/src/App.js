@@ -3,7 +3,8 @@ import './styles/App.css';
 import React, {useEffect, useState} from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
-import { Main, Enquire, EnquireInfo, EnquireRegist, Fund, FundRegist, Info, Search, Tree, Signup, Login, Admin, Certification, Tonic } from './pages';
+import { Main, Enquire, EnquireInfo, EnquireRegist, Fund, FundRegist, Info, Search, Tree, Signup, Login, Admin, Certification, Tonic, FundDetail } from './pages';
+
 import Navbar from './components/Navbar';
 import { useUserStore } from './stores/userStore';
 import PrivateRoute from './components/PrivateRoute';
@@ -32,6 +33,7 @@ const App = () => {
 					<Route path="/enquire/regist" element={<EnquireRegist />} />
 					<Route path="/fund" element={<Fund />} />
 					<Route path="/fund/regist" element={<FundRegist />} />
+					<Route path="/fund/:fundPk" element={<FundDetail />} />
 					<Route path="/info" element={<Info />} />
 					<Route path="/search" element={<Search />} />
 					<Route path="/tree" element={<PrivateRoute component={<Tree/>}/>} />
