@@ -150,6 +150,11 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.fund-body{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .fund-footer{
     text-align: center;
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import { Item } from "./components/Item";
 import { Navbar } from "./components/Navbar";
@@ -6,20 +7,39 @@ import { Navbar } from "./components/Navbar";
 import "../../styles/Fund.css"
 
 const Fund = () => {
-    const fund = {
-        pk: 0,
-        image: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-        title: "나무를 심어요",
-        firstCategory: "환경",
-        secondCategory: "나무",
-        description: "나무를 심어요",
-        progress: 50,
-        cur_money: 50000,
-        dday: 10,
+
+    const [fundList, setFundList] = useState([]);
+    const page_size = 9;
+
+    const getFundItem = async () => {
+        let query = "";
+        query += `?sort=${fundSearch.sort}`;
+        query += `&PageNumber=${fundSearch.page-1}`;
+        query += `&PageSize=${page_size}`;
+        if(fundSearch.category !== "all") {
+            query += `&FirstCategory=${fundSearch.category}`;
+        }
+
+        const response = await axios.get(`${process.env.REACT_APP_PROXY}/funding/${query}`);
+        console.log(response);
+
+        let list = response.data.fundingList.content.map((item) => ({
+            pk: item.funding_pk,
+            image: item.main_img,
+            title: item.title,
+            firstCategory: item.first_category_name,
+            secondCategory: item.second_category_name,
+            description: item.description,
+            progress: (item.current_amount/item.target_amount).toFixed(1)*100,
+            cur_money: item.current_amount,
+            dday: item.dday,
+        }))
+        console.log(list);
+        setFundList(list);
+
     }
 
-    const fund_count = 1;
-    const page_count = 12;
+
 
     
     
@@ -53,6 +73,7 @@ const Fund = () => {
     // 추후 삭제 필요
     useEffect(() => {
         console.log(fundSearch);
+        getFundItem();
     }, [fundSearch])
 
     return (
@@ -64,16 +85,18 @@ const Fund = () => {
                 </div>
                 <Navbar fundSearch={ fundSearch } setFundSearch={ setFundSearch } />
                 <div className="fund-header-count">
-                    <span className="fund-count">{ fund_count }</span>개의 프로젝트가 있습니다.
+                    <span className="fund-count">{ fundList.length }</span>개의 프로젝트가 있습니다.
                 </div>
             </section>
             <section className="fund-body">
-                <Item fund={fund} />
+                {fundList.map((item) => (
+                    <Item key={item.pk} fund={item} />
+                ))}
             </section>
             <section className="fund-footer">
                 <ul>
                     {/* <a href="#"><li>{'<'}</li></a> */}
-                    {[...Array(page_count)].map((n, index) => {
+                    {[...Array(Math.ceil(fundList.length/page_size))].map((n, index) => {
                         return (
                             <div onClick={setPage} key={index} className={fundSearch.page === index+1 ? "is-active" : ""}><li>{index + 1}</li></div>
                         )})

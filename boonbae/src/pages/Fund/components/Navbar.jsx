@@ -53,7 +53,7 @@ export const Navbar = ({ fundSearch, setFundSearch }) => {
                 <option value="all">전체</option>
                 {categories.map(category => {
                     return (
-                        <option key={category.pk} value={category.pk}>{category.name}</option>
+                        <option key={category.pk} value={category.name}>{category.name}</option>
                     )
                 })}
             </select>
