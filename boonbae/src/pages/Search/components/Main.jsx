@@ -1,4 +1,7 @@
-import React, {useEffect, useState} from 'react'
+
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLightbulb } from '@fortawesome/free-solid-svg-icons'
@@ -9,12 +12,21 @@ export const Main = () => {
 
     // get rank items
     useEffect(() => {
-        setRankItems(["예시1", "예시2", "예시3", "예시4", "예시5"])
+        axios(`${process.env.REACT_APP_PROXY}/search/ranking`)
+            .then(res => {
+                console.log(res.data)
+                setRankItems(res.data?.rank)
+            });
+
     }, [])
 
     // get honeytip
     useEffect(() => {
-        setHoneytip("오늘의 꿀팁 예시")
+        axios(`${process.env.REACT_APP_PROXY}/tip/`)
+            .then(res => {
+                console.log(res.data)
+                setHoneytip(res.data?.content)
+            })
     }, [])
 
     return (
